@@ -5,6 +5,8 @@ export default function FloatingButtons() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
+    const phoneNumber = '+38344123456';
+
     useEffect(() => {
         const handleScroll = () => {
             setShowScrollTop(window.scrollY > 400);
@@ -22,8 +24,8 @@ export default function FloatingButtons() {
             {showScrollTop && (
                 <button
                     onClick={scrollToTop}
-                    className="w-12 h-12 bg-primary text-white rounded-full shadow-lg 
-                     hover:bg-gray-800 hover:scale-110 transition-all duration-300
+                    className="w-12 h-12 bg-gradient-to-r from-secondary to-accent text-primary rounded-full shadow-lg 
+                     hover:scale-110 transition-all duration-300
                      flex items-center justify-center"
                     aria-label="Scroll to top"
                 >
@@ -35,21 +37,21 @@ export default function FloatingButtons() {
                 {isExpanded && (
                     <div className="absolute bottom-16 right-0 flex flex-col gap-3 mb-2">
                         <a
-                            href="tel:+33123456789"
+                            href={`tel:${phoneNumber}`}
                             className="w-12 h-12 bg-blue-500 text-white rounded-full shadow-lg
-                         hover:scale-110 transition-all duration-300
-                         flex items-center justify-center animate-fade-in"
+                             hover:scale-110 transition-all duration-300
+                             flex items-center justify-center"
                             aria-label="Call us"
                         >
                             <Phone className="h-5 w-5" />
                         </a>
                         <a
-                            href="https://wa.me/33123456789"
+                            href={`https://wa.me/${phoneNumber.replace('+', '')}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg
-                         hover:scale-110 transition-all duration-300
-                         flex items-center justify-center"
+                             hover:scale-110 transition-all duration-300
+                             flex items-center justify-center"
                             aria-label="WhatsApp"
                         >
                             <MessageCircle className="h-5 w-5" />

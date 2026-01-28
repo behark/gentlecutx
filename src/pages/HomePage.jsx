@@ -1,4 +1,5 @@
 import Hero from '../components/Hero';
+import StatsSection from '../components/StatsSection';
 import Gallery from '../components/Gallery';
 import ServicesPreview from '../components/ServicesPreview';
 import SpecialOffers from '../components/SpecialOffers';
@@ -9,6 +10,7 @@ export default function HomePage() {
     return (
         <main>
             <Hero />
+            <StatsSection />
             <Gallery />
             <ServicesPreview />
             <SpecialOffers />
