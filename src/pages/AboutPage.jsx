@@ -2,6 +2,7 @@ import { Star, Award, Users, Clock } from 'lucide-react';
 import { salonInfo, openingHours, barbers, reviews } from '../data/salonData';
 import TeamSection from '../components/TeamSection';
 import { useLanguage } from '../context/LanguageContext';
+import { localize } from '../utils/localize';
 
 export default function AboutPage() {
     const { language } = useLanguage();
@@ -76,12 +77,12 @@ export default function AboutPage() {
                             <div className="bg-gray-50 rounded-xl p-6">
                                 {openingHours.map((item) => (
                                     <div
-                                        key={item.day}
+                                        key={typeof item.day === 'object' ? item.day[language] : item.day}
                                         className="flex justify-between py-3 border-b border-gray-200 last:border-0"
                                     >
-                                        <span className="font-medium text-primary">{typeof item.day === 'object' ? item.day[language] : item.day}</span>
+                                        <span className="font-medium text-primary">{localize(item.day, language)}</span>
                                         <span className={item.isOpen ? 'text-gray-600' : 'text-red-500'}>
-                                            {typeof item.hours === 'object' ? item.hours[language] : item.hours}
+                                            {localize(item.hours, language)}
                                         </span>
                                     </div>
                                 ))}
@@ -98,10 +99,10 @@ export default function AboutPage() {
                                                 <Star key={i} className="h-4 w-4 text-secondary fill-current" />
                                             ))}
                                         </div>
-                                        <p className="text-gray-600 mb-3">"{review.text}"</p>
+                                        <p className="text-gray-600 mb-3">"{localize(review.text, language)}"</p>
                                         <div className="flex justify-between text-sm">
                                             <span className="font-semibold text-primary">{review.author}</span>
-                                            <span className="text-gray-400">{review.date}</span>
+                                            <span className="text-gray-400">{localize(review.date, language)}</span>
                                         </div>
                                     </div>
                                 ))}

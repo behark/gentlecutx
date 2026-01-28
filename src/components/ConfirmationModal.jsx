@@ -1,9 +1,14 @@
 import { CheckCircle, X, Calendar, Clock, User, Scissors } from 'lucide-react';
 import { format } from 'date-fns';
+import { useLanguage } from '../context/LanguageContext';
+import { localize } from '../utils/localize';
+import { translations } from '../data/translations';
 
 export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
     if (!isOpen) return null;
 
+    const { language } = useLanguage();
+    const t = translations[language];
     const { services, barber, date, time, customer, totalPrice, totalDuration } = bookingData;
 
     return (
@@ -18,8 +23,8 @@ export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
                     <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                         <CheckCircle className="h-12 w-12 text-green-500" />
                     </div>
-                    <h2 className="text-2xl font-bold text-primary mb-2">Booking Confirmed!</h2>
-                    <p className="text-primary/70">We look forward to seeing you</p>
+                    <h2 className="text-2xl font-bold text-primary mb-2">{t.confirmation.title}</h2>
+                    <p className="text-primary/70">{t.confirmation.subtitle}</p>
                 </div>
 
                 <button
@@ -33,7 +38,7 @@ export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
                     <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
                         <Calendar className="h-5 w-5 text-secondary mt-0.5" />
                         <div>
-                            <p className="text-sm text-gray-500">Date & Time</p>
+                            <p className="text-sm text-gray-500">{t.booking.steps.datetime}</p>
                             <p className="font-semibold text-primary">
                                 {format(date, 'EEEE, MMMM d, yyyy')}
                             </p>
@@ -44,13 +49,13 @@ export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
                     <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
                         <Scissors className="h-5 w-5 text-secondary mt-0.5" />
                         <div>
-                            <p className="text-sm text-gray-500">Services</p>
+                            <p className="text-sm text-gray-500">{t.confirmation.services}</p>
                             <p className="font-semibold text-primary">
-                                {services.map(s => s.name).join(', ')}
+                                {services.map(s => localize(s.name, language)).join(', ')}
                             </p>
                             <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
                                 <Clock className="h-4 w-4" />
-                                <span>{totalDuration} minutes</span>
+                                <span>{totalDuration} {t.services.duration}</span>
                             </div>
                         </div>
                     </div>
@@ -58,31 +63,35 @@ export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
                     <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
                         <User className="h-5 w-5 text-secondary mt-0.5" />
                         <div>
-                            <p className="text-sm text-gray-500">Barber</p>
+                            <p className="text-sm text-gray-500">{t.confirmation.barber}</p>
                             <p className="font-semibold text-primary">
-                                {barber?.name || 'First Available'}
+                                {barber?.name || t.booking.anyBarber}
                             </p>
                         </div>
                     </div>
 
                     <div className="border-t pt-4 mt-4">
                         <div className="flex justify-between items-center">
-                            <span className="text-gray-600">Total</span>
+                            <span className="text-gray-600">{t.confirmation.total}</span>
                             <span className="text-3xl font-bold text-secondary">{totalPrice}€</span>
                         </div>
                     </div>
 
                     <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-center">
-                        <p className="text-blue-800 text-sm">
-                            A confirmation has been sent to <strong>{customer.email}</strong>
-                        </p>
+                        {customer.email ? (
+                            <p className="text-blue-800 text-sm">
+                                {t.confirmation.emailNotice} <strong>{customer.email}</strong>
+                            </p>
+                        ) : (
+                            <p className="text-blue-800 text-sm">{t.confirmation.reminder}</p>
+                        )}
                     </div>
 
                     <button
                         onClick={onClose}
                         className="w-full btn-primary text-center"
                     >
-                        Done
+                        {t.confirmation.done}
                     </button>
                 </div>
             </div>
