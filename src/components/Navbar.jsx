@@ -29,30 +29,35 @@ export default function Navbar() {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-            ? 'bg-primary/95 backdrop-blur-md shadow-xl'
-            : 'bg-transparent'
+        <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled
+            ? 'bg-primary/95 backdrop-blur-xl shadow-2xl border-b border-secondary/10'
+            : 'bg-gradient-to-b from-primary/80 to-transparent'
             }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    <Link to="/" className="flex items-center space-x-2">
-                        <Scissors className="h-8 w-8 text-secondary" />
+                    <Link to="/" className="flex items-center space-x-2 group">
+                        <div className={`p-2 rounded-xl transition-all duration-300 ${scrolled ? 'bg-secondary/10' : 'bg-white/10'} group-hover:bg-secondary/20 group-hover:scale-105`}>
+                            <Scissors className="h-6 w-6 text-secondary" />
+                        </div>
                         <span className="text-2xl font-bold text-white tracking-wide">
-                            Gentle<span className="text-secondary">Cutx</span>
+                            Gentle<span className="text-gradient-animate">Cutx</span>
                         </span>
                     </Link>
 
-                    <div className="hidden md:flex items-center space-x-6">
+                    <div className="hidden md:flex items-center space-x-1">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.path}
                                 to={link.path}
-                                className={`text-sm font-medium transition-colors duration-200 ${isActive(link.path)
-                                    ? 'text-secondary'
-                                    : 'text-gray-300 hover:text-secondary'
+                                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${isActive(link.path)
+                                    ? 'text-secondary bg-secondary/10'
+                                    : 'text-gray-300 hover:text-white hover:bg-white/5'
                                     }`}
                             >
                                 {link.name}
+                                {isActive(link.path) && (
+                                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-secondary rounded-full"></span>
+                                )}
                             </Link>
                         ))}
                         <LanguageToggle />

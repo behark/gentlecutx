@@ -1,8 +1,10 @@
 import { Star, Award, Users, Clock } from 'lucide-react';
 import { salonInfo, openingHours, barbers, reviews } from '../data/salonData';
 import TeamSection from '../components/TeamSection';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function AboutPage() {
+    const { language } = useLanguage();
     const stats = [
         { icon: Users, value: '5000+', label: 'Happy Clients' },
         { icon: Award, value: '10+', label: 'Years Experience' },
@@ -77,9 +79,9 @@ export default function AboutPage() {
                                         key={item.day}
                                         className="flex justify-between py-3 border-b border-gray-200 last:border-0"
                                     >
-                                        <span className="font-medium text-primary">{item.day}</span>
+                                        <span className="font-medium text-primary">{typeof item.day === 'object' ? item.day[language] : item.day}</span>
                                         <span className={item.isOpen ? 'text-gray-600' : 'text-red-500'}>
-                                            {item.hours}
+                                            {typeof item.hours === 'object' ? item.hours[language] : item.hours}
                                         </span>
                                     </div>
                                 ))}

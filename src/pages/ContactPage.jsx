@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { salonInfo, openingHours } from '../data/salonData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ContactPage() {
+    const { language } = useLanguage();
     const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
 
@@ -68,7 +70,7 @@ export default function ContactPage() {
                                         <h3 className="font-semibold text-primary mb-1">Opening Hours</h3>
                                         <div className="text-gray-600 text-sm space-y-1">
                                             {openingHours.slice(0, 3).map((item) => (
-                                                <p key={item.day}>{item.day}: {item.hours}</p>
+                                                <p key={typeof item.day === 'object' ? item.day[language] : item.day}>{typeof item.day === 'object' ? item.day[language] : item.day}: {typeof item.hours === 'object' ? item.hours[language] : item.hours}</p>
                                             ))}
                                             <p className="text-secondary font-medium">View all hours on About page</p>
                                         </div>
