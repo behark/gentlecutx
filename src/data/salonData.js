@@ -48,7 +48,7 @@ export const services = [
         category: { sq: "Trajtime", en: "Treatments" },
         items: [
             { id: 301, name: { sq: "Trajtim me maskë & avull", en: "Mask & Steam Treatment" }, duration: 25, price: 5, description: { sq: "Trajtim relaksues me maskë dhe avull", en: "Relaxing mask and steam treatment" } },
-            { id: 302, name: { sq: "Depilimi i fytyrës med dyll", en: "Face Waxing" }, duration: 20, price: 5, description: { sq: "Depilim i fytyrës me dyll profesional", en: "Professional face waxing" } },
+            { id: 302, name: { sq: "Depilimi i fytyrës me dyll", en: "Facial Waxing" }, duration: 20, price: 5, description: { sq: "Depilim i fytyrës me dyll profesional", en: "Professional face waxing" } },
         ]
     }
 ];
