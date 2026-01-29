@@ -29,31 +29,26 @@ export const openingHours = [
 export const services = [
     {
         id: 1,
-        category: { sq: "Prerje Flokësh", en: "Haircuts" },
+        category: { sq: "Flokë", en: "Hair" },
         items: [
-            { id: 101, name: { sq: "Prerje Klasike", en: "Classic Haircut" }, duration: 30, price: 8, description: { sq: "Shampo + prerje me gërshërë ose makinë + stilim", en: "Shampoo + scissors or clipper cut + styling" } },
-            { id: 102, name: { sq: "Fade", en: "Fade Cut" }, duration: 30, price: 10, description: { sq: "Fade modern me linja të pastra", en: "Modern fade with clean lines" } },
-            { id: 103, name: { sq: "Flokë të Gjatë", en: "Long Hair Cut" }, duration: 40, price: 12, description: { sq: "Stilim për flokë të gjatë", en: "Styling for longer hair" } },
-            { id: 104, name: { sq: "Prerje për Fëmijë", en: "Kids Haircut" }, duration: 25, price: 6, description: { sq: "Për fëmijë nën 12 vjeç", en: "For children under 12" } },
-            { id: 105, name: { sq: "Rruajtje Koke", en: "Head Shave" }, duration: 20, price: 7, description: { sq: "Rruajtje e plotë e kokës", en: "Complete head shave with razor" } },
+            { id: 101, name: { sq: "Prerja e flokëve", en: "Haircut" }, duration: 30, price: 10, description: { sq: "Prerje profesionale e flokëve", en: "Professional haircut" } },
+            { id: 102, name: { sq: "Larja e flokëve", en: "Hair Wash" }, duration: 10, price: 2, description: { sq: "Larje e flokëve me shampo profesionale", en: "Hair wash with professional shampoo" } },
         ]
     },
     {
         id: 2,
         category: { sq: "Mjekër", en: "Beard" },
         items: [
-            { id: 201, name: { sq: "Rregullim Mjekre", en: "Beard Trim" }, duration: 15, price: 5, description: { sq: "Formësim dhe prerje me gërshërë ose makinë", en: "Shape and trim with scissors or clippers" } },
-            { id: 202, name: { sq: "Stilim Mjekre", en: "Beard Styling" }, duration: 25, price: 8, description: { sq: "Formësim i plotë i mjekrës me linja", en: "Full beard shaping with line-up" } },
-            { id: 203, name: { sq: "Rruajtje Tradicionale", en: "Traditional Shave" }, duration: 30, price: 10, description: { sq: "Peshqir i nxehtë + rruajtje me brisk", en: "Hot towel + straight razor shave" } },
+            { id: 201, name: { sq: "Rregullim i mjekrrës", en: "Beard Trim" }, duration: 15, price: 4, description: { sq: "Rregullim dhe formësim i mjekrrës", en: "Beard trimming and shaping" } },
+            { id: 202, name: { sq: "Ngjyrosje e mjekrrës", en: "Beard Coloring" }, duration: 20, price: 5, description: { sq: "Ngjyrosje profesionale e mjekrrës", en: "Professional beard coloring" } },
         ]
     },
     {
         id: 3,
-        category: { sq: "Paketa", en: "Packages" },
+        category: { sq: "Trajtime", en: "Treatments" },
         items: [
-            { id: 301, name: { sq: "Prerje + Mjekër", en: "Haircut + Beard" }, duration: 45, price: 12, description: { sq: "Paketë e plotë kujdesi", en: "Complete grooming package" } },
-            { id: 302, name: { sq: "Paketa VIP", en: "VIP Package" }, duration: 60, price: 20, description: { sq: "Prerje + mjekër + trajtim fytyre", en: "Haircut + beard + face treatment" } },
-            { id: 303, name: { sq: "Paketa Dhëndër", en: "Groom Package" }, duration: 75, price: 35, description: { sq: "Stilim i plotë për raste speciale", en: "Complete styling for special occasions" } },
+            { id: 301, name: { sq: "Trajtim me maskë & avull", en: "Mask & Steam Treatment" }, duration: 25, price: 5, description: { sq: "Trajtim relaksues me maskë dhe avull", en: "Relaxing mask and steam treatment" } },
+            { id: 302, name: { sq: "Depilimi i fytyrës med dyll", en: "Face Waxing" }, duration: 20, price: 5, description: { sq: "Depilim i fytyrës me dyll profesional", en: "Professional face waxing" } },
         ]
     }
 ];
