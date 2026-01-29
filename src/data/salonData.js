@@ -56,38 +56,23 @@ export const services = [
 export const barbers = [
     {
         id: 1,
-        name: "Driton",
+        name: "Riad Latifi",
         role: { sq: "Berber Kryesor", en: "Master Barber" },
-        experience: 8,
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-        specialties: { sq: ["Prerje Klasike", "Fade"], en: ["Classic Cuts", "Fades"] }
-    },
-    {
-        id: 2,
-        name: "Arben",
-        role: { sq: "Berber Senior", en: "Senior Barber" },
-        experience: 5,
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
-        specialties: { sq: ["Stile Moderne", "Mjekër"], en: ["Modern Styles", "Beard"] }
-    },
-    {
-        id: 3,
-        name: "Besart",
-        role: { sq: "Berber", en: "Barber" },
-        experience: 3,
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
-        specialties: { sq: ["Stilim Mjekre", "Prerje Fëmijësh"], en: ["Beard Styling", "Kids Cuts"] }
+        experience: 10,
+        image: "/riad-latifi.jpeg",
+        specialties: { sq: ["Prerje Klasike & Moderne", "Mjekër", "Trajtime"], en: ["Classic & Modern Cuts", "Beard", "Treatments"] }
     }
 ];
 
 export const reviews = [
-    { id: 1, author: "Ardi K.", rating: 5, text: { sq: "Berberi më i mirë në qytet! Driton gjithmonë bën punë perfekte.", en: "Best barbershop in town! Driton always delivers a perfect cut." }, date: { sq: "2 ditë më parë", en: "2 days ago" } },
+    { id: 1, author: "Ardi K.", rating: 5, text: { sq: "Berberi më i mirë në qytet! Gjithmonë prerje perfekte.", en: "Best barbershop in town! Always a perfect cut." }, date: { sq: "2 ditë më parë", en: "2 days ago" } },
     { id: 2, author: "Leart M.", rating: 5, text: { sq: "Atmosferë e shkëlqyer dhe shërbim profesional. Rekomandoj!", en: "Great atmosphere and professional service. Highly recommend!" }, date: { sq: "1 javë më parë", en: "1 week ago" } },
     { id: 3, author: "Rinor H.", rating: 5, text: { sq: "Paketa VIP është fantastike. Vlen çdo cent.", en: "The VIP package is amazing. Worth every penny." }, date: { sq: "2 javë më parë", en: "2 weeks ago" } },
     { id: 4, author: "Blend S.", rating: 5, text: { sq: "Më në fund gjeta berberin tim. Pastër, profesional, dhe i aftë.", en: "Finally found my go-to barbershop. Clean, professional, and skilled." }, date: { sq: "3 javë më parë", en: "3 weeks ago" } },
 ];
 
 export const galleryImages = [
+    "/storefront.jpeg",
     "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&h=600&fit=crop",
     "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&h=600&fit=crop",
     "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&h=600&fit=crop",

@@ -13,7 +13,7 @@ export default function Hero() {
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
                 style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop)',
+                    backgroundImage: 'url(/storefront-hero.jpeg)',
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/70"></div>

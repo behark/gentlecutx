@@ -40,11 +40,13 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=400&fit=crop"
-                                alt="Our salon"
-                                className="rounded-2xl shadow-xl"
-                            />
+                            <div className="h-[560px] w-full overflow-hidden rounded-2xl shadow-xl">
+                                <img
+                                    src="/storefront-about.jpeg"
+                                    alt="Our salon"
+                                    className="h-full w-full object-cover object-center"
+                                />
+                            </div>
                             <div className="absolute -bottom-6 -left-6 bg-secondary text-primary p-6 rounded-xl shadow-lg">
                                 <div className="text-4xl font-bold">10+</div>
                                 <div className="text-sm font-medium">Years of Excellence</div>

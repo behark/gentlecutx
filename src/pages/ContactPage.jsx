@@ -82,12 +82,11 @@ export default function ContactPage() {
                                 </div>
                             </div>
 
-                            <div className="bg-gray-100 rounded-xl h-64 flex items-center justify-center">
-                                <div className="text-center text-gray-500">
-                                    <MapPin className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                                    <p>{language === 'sq' ? 'Harta e disponueshme' : 'Map integration available'}</p>
-                                </div>
-                            </div>
+                            <img
+                                src="/storefront-banner.jpeg"
+                                alt={language === 'sq' ? 'GentleCutx – lokacioni ynë' : 'GentleCutx – our location'}
+                                className="rounded-xl w-full h-64 object-cover object-center"
+                            />
                         </div>
 
                         <div>

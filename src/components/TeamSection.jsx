@@ -29,7 +29,7 @@ export default function TeamSection() {
                     <p className="section-subtitle">{t.team.subtitle}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ display: 'grid', gap: '2rem' }}>
+                <div className={`grid grid-cols-1 gap-8 ${barbers.length === 1 ? 'max-w-md mx-auto' : 'md:grid-cols-3'}`} style={{ display: 'grid', gap: '2rem' }}>
                     {barbers.map((barber, index) => (
                         <div
                             key={barber.id}
