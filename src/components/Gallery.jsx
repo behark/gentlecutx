@@ -40,7 +40,7 @@ export default function Gallery() {
 
     return (
         <section className="py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div
                     ref={ref}
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -71,6 +71,7 @@ export default function Gallery() {
                                     <img
                                         src={img}
                                         alt={`Salon view ${index + 1}`}
+                                        loading="lazy"
                                         className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
@@ -122,7 +123,7 @@ export default function Gallery() {
                                     : 'opacity-60 hover:opacity-100'
                                 }`}
                         >
-                            <img src={img} alt="" className="w-full h-full object-cover" />
+                            <img src={img} alt={`Salon thumbnail ${index + 1}`} loading="lazy" className="w-full h-full object-cover" />
                         </button>
                     ))}
                 </div>
@@ -131,7 +132,7 @@ export default function Gallery() {
             {/* Lightbox Modal */}
             {lightboxOpen && (
                 <div
-                    className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+                    className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center"
                     onClick={() => setLightboxOpen(false)}
                 >
                     <button

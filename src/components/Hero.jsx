@@ -37,7 +37,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div className="relative z-10 max-w-7xl px-4 sm:px-6 lg:px-8 py-32" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div className="max-w-3xl fade-in">
                     <div className="inline-flex items-center gap-3 glass-premium px-5 py-2.5 rounded-full mb-8 shimmer">
                         <div className="flex">
@@ -93,14 +93,14 @@ export default function Hero() {
             </div>
 
             {/* Animated scroll indicator */}
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+            <div className="absolute bottom-44 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
                 <span className="text-white/50 text-xs uppercase tracking-widest">{language === 'sq' ? 'Zbulo më shumë' : 'Scroll to explore'}</span>
                 <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2">
                     <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce"></div>
                 </div>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-50 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
         </section>
     );
 }

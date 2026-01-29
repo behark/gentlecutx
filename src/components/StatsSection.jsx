@@ -43,8 +43,8 @@ export default function StatsSection() {
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8 relative" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8" style={{ display: 'grid', gap: '2rem' }}>
                     {stats.map((stat, index) => (
                         <StatCard key={index} stat={stat} index={index} />
                     ))}
@@ -59,10 +59,9 @@ function StatCard({ stat, index }) {
     const Icon = stat.icon;
 
     return (
-        <div 
+        <div
             ref={ref}
             className="text-center group"
-            style={{ animationDelay: `${index * 150}ms` }}
         >
             <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                 <Icon className="h-8 w-8 text-white" />
@@ -71,7 +70,7 @@ function StatCard({ stat, index }) {
                 <span className="count-up">{count.toLocaleString()}</span>
                 <span className="text-secondary">{stat.suffix}</span>
             </div>
-            <p className="text-gray-400 font-medium">{stat.label}</p>
+            <p className="text-gray-300 font-medium">{stat.label}</p>
         </div>
     );
 }

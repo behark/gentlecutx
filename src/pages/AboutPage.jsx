@@ -28,13 +28,14 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-6">Our Story</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-6">{language === 'sq' ? 'Historia Jonë' : 'Our Story'}</h2>
                             <div className="prose prose-lg text-gray-600">
-                                <p className="mb-4">{salonInfo.description}</p>
+                                <p className="mb-4">{localize(salonInfo.description, language)}</p>
                                 <p>
-                                    At GentleCutx, we believe that grooming is more than just a haircut – it's an experience.
-                                    Our mission is to provide exceptional service in a welcoming environment where every client
-                                    feels valued and leaves looking their absolute best.
+                                    {language === 'sq'
+                                        ? 'Në GentleCutx, ne besojmë se kujdesi personal është më shumë se thjesht një prerje flokësh – është një përvojë. Misioni ynë është të ofrojmë shërbim të jashtëzakonshëm në një ambient mikpritës ku çdo klient ndihet i vlerësuar dhe largohet duke u dukur më i mirë.'
+                                        : 'At GentleCutx, we believe that grooming is more than just a haircut – it\'s an experience. Our mission is to provide exceptional service in a welcoming environment where every client feels valued and leaves looking their absolute best.'
+                                    }
                                 </p>
                             </div>
                         </div>

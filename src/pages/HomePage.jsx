@@ -13,16 +13,16 @@ export default function HomePage() {
         <main>
             <Hero />
             <StatsSection />
-            <SectionDivider variant="wave" className="bg-primary -mt-1" />
+            <SectionDivider variant="wave" className="bg-primary -mt-px" />
             <Gallery />
-            <SectionDivider variant="curve" className="bg-white -mt-1" flip />
+            <SectionDivider variant="curve" className="bg-white -mt-px" flip />
             <ServicesPreview />
             <WhyChooseUs />
-            <SectionDivider variant="wave-dark" className="bg-gray-50 -mt-1" />
+            <SectionDivider variant="wave-dark" className="bg-gray-50 -mt-px" />
             <SpecialOffers />
-            <SectionDivider variant="wave" className="bg-primary -mt-1" />
+            <SectionDivider variant="wave" className="bg-primary -mt-px" />
             <TeamSection />
-            <SectionDivider variant="curve" className="bg-white -mt-1" flip />
+            <SectionDivider variant="curve" className="bg-white -mt-px" flip />
             <ReviewsSection />
         </main>
     );

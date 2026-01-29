@@ -1,10 +1,16 @@
 export const salonInfo = {
     name: "GentleCutx",
     tagline: "Premium Barbershop Experience",
+    description: {
+        sq: "GentleCutx është themeluar me një vizion të thjeshtë: të ofrojë shërbime premium të berbershop në një ambient modern dhe mikpritës. Ekipi ynë i berberëve të certifikuar sjell vite përvojë dhe pasion për zanatin e tyre.",
+        en: "GentleCutx was founded with a simple vision: to provide premium barbershop services in a modern, welcoming environment. Our team of certified barbers brings years of experience and a passion for their craft."
+    },
     address: "Rruga Agim Ramadani, Prishtinë, Kosovë",
     phone: "+383 44 123 456",
+    whatsapp: "+38344123456",
     email: "info@gentlecutx.com",
-    instagram: "@gentlecutx",
+    instagram: "https://instagram.com/gentlecutx",
+    facebook: "https://facebook.com/gentlecutx",
     rating: 5.0,
     reviewCount: 156,
     mapUrl: "https://maps.google.com/?q=Prishtina,Kosovo",

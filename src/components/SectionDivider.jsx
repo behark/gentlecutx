@@ -1,5 +1,5 @@
 export default function SectionDivider({ variant = 'wave', flip = false, className = '' }) {
-    const baseClass = `w-full overflow-hidden leading-none ${flip ? 'rotate-180' : ''} ${className}`;
+    const baseClass = `w-full overflow-hidden leading-[0] ${flip ? 'rotate-180' : ''} ${className}`;
 
     if (variant === 'wave') {
         return (

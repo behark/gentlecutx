@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Phone, MessageCircle, ChevronUp } from 'lucide-react';
+import { salonInfo } from '../data/salonData';
 
 export default function FloatingButtons() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const phoneNumber = '+38344123456';
+    const phoneNumber = salonInfo.whatsapp;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,7 +21,7 @@ export default function FloatingButtons() {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        <div className="fixed bottom-6 right-6 z-[55] flex flex-col items-end gap-3">
             {showScrollTop && (
                 <button
                     onClick={scrollToTop}

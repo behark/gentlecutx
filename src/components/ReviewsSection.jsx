@@ -33,7 +33,7 @@ export default function ReviewsSection() {
                 <div className="absolute bottom-1/4 -right-20 w-60 h-60 bg-accent/10 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8 relative" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div
                     ref={ref}
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -94,13 +94,13 @@ export default function ReviewsSection() {
                     {/* Navigation arrows */}
                     <button
                         onClick={prevReview}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white shadow-lg hover:shadow-xl p-3 rounded-full transition-all hover:scale-110 hidden md:flex"
+                        className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 bg-white shadow-lg hover:shadow-xl p-3 rounded-full transition-all hover:scale-110 hidden md:flex"
                     >
                         <ChevronLeft className="h-6 w-6 text-primary" />
                     </button>
                     <button
                         onClick={nextReview}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white shadow-lg hover:shadow-xl p-3 rounded-full transition-all hover:scale-110 hidden md:flex"
+                        className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 bg-white shadow-lg hover:shadow-xl p-3 rounded-full transition-all hover:scale-110 hidden md:flex"
                     >
                         <ChevronRight className="h-6 w-6 text-primary" />
                     </button>
@@ -121,7 +121,7 @@ export default function ReviewsSection() {
                 </div>
 
                 {/* Mini review cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style={{ display: 'grid', gap: '1.5rem' }}>
                     {reviews.map((review, index) => (
                         <div
                             key={review.id}

@@ -17,7 +17,7 @@ export default function TeamSection() {
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8 relative" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div
                     ref={ref}
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -29,7 +29,7 @@ export default function TeamSection() {
                     <p className="section-subtitle">{t.team.subtitle}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ display: 'grid', gap: '2rem' }}>
                     {barbers.map((barber, index) => (
                         <div
                             key={barber.id}
@@ -39,9 +39,9 @@ export default function TeamSection() {
                             {/* Card glow effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                            <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-3xl p-8 text-center border border-gray-700/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2">
+                            <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-3xl p-8 text-center border border-gray-700/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2 overflow-visible">
                                 {/* Experience badge */}
-                                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-secondary to-accent text-primary text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
+                                <div className="absolute -top-3 right-3 bg-gradient-to-r from-secondary to-accent text-primary text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 z-10">
                                     <Award className="h-3 w-3" />
                                     {barber.experience} {language === 'sq' ? 'vite' : 'yrs'}
                                 </div>

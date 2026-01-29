@@ -18,7 +18,7 @@ export default function Footer() {
 
             {/* CTA Section */}
             <div className="relative border-b border-gray-800/50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-12" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                     <div className="bg-gradient-to-r from-secondary/20 to-accent/20 backdrop-blur-sm rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 border border-secondary/20">
                         <div>
                             <h3 className="text-2xl md:text-3xl font-bold mb-2">
@@ -39,8 +39,8 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12" style={{ display: 'grid', gap: '3rem' }}>
                     <div>
                         <Link to="/" className="flex items-center space-x-2 mb-6 group">
                             <div className="w-12 h-12 bg-gradient-to-br from-secondary to-accent rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
@@ -50,14 +50,14 @@ export default function Footer() {
                                 Gentle<span className="text-gradient-animate">Cutx</span>
                             </span>
                         </Link>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
                             {t.footer.description}
                         </p>
                         <div className="flex space-x-3">
-                            <a href="#" className="w-10 h-10 bg-gray-800/50 hover:bg-secondary/20 rounded-xl flex items-center justify-center text-gray-400 hover:text-secondary transition-all hover:scale-110">
+                            <a href={salonInfo.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800/50 hover:bg-secondary/20 rounded-xl flex items-center justify-center text-gray-400 hover:text-secondary transition-all hover:scale-110" aria-label="Follow us on Instagram">
                                 <Instagram className="h-5 w-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 bg-gray-800/50 hover:bg-secondary/20 rounded-xl flex items-center justify-center text-gray-400 hover:text-secondary transition-all hover:scale-110">
+                            <a href={salonInfo.facebook} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800/50 hover:bg-secondary/20 rounded-xl flex items-center justify-center text-gray-400 hover:text-secondary transition-all hover:scale-110" aria-label="Follow us on Facebook">
                                 <Facebook className="h-5 w-5" />
                             </a>
                         </div>
@@ -79,7 +79,7 @@ export default function Footer() {
                                 <li key={link.to}>
                                     <Link
                                         to={link.to}
-                                        className="text-gray-400 hover:text-secondary text-sm transition-colors flex items-center gap-2 group"
+                                        className="text-gray-300 hover:text-secondary text-sm transition-colors flex items-center gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-2 h-0.5 bg-secondary transition-all duration-300"></span>
                                         {link.label}
@@ -99,19 +99,19 @@ export default function Footer() {
                                 <div className="w-10 h-10 bg-gray-800/50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
                                     <MapPin className="h-5 w-5 text-secondary" />
                                 </div>
-                                <span className="text-gray-400 text-sm pt-2">{salonInfo.address}</span>
+                                <span className="text-gray-300 text-sm pt-2">{salonInfo.address}</span>
                             </li>
                             <li className="flex items-center space-x-3 group">
                                 <div className="w-10 h-10 bg-gray-800/50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
                                     <Phone className="h-5 w-5 text-secondary" />
                                 </div>
-                                <span className="text-gray-400 text-sm">{salonInfo.phone}</span>
+                                <span className="text-gray-300 text-sm">{salonInfo.phone}</span>
                             </li>
                             <li className="flex items-center space-x-3 group">
                                 <div className="w-10 h-10 bg-gray-800/50 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
                                     <Mail className="h-5 w-5 text-secondary" />
                                 </div>
-                                <span className="text-gray-400 text-sm">{salonInfo.email}</span>
+                                <span className="text-gray-300 text-sm">{salonInfo.email}</span>
                             </li>
                         </ul>
                     </div>
@@ -124,7 +124,7 @@ export default function Footer() {
                         <ul className="space-y-2">
                             {openingHours.map((item, index) => (
                                 <li key={index} className="flex justify-between text-sm py-1.5 border-b border-gray-800/50 last:border-0">
-                                    <span className="text-gray-400">{item.day[language] || item.day}</span>
+                                    <span className="text-gray-300">{item.day[language] || item.day}</span>
                                     <span className={`font-medium ${item.isOpen ? 'text-secondary' : 'text-gray-500'}`}>
                                         {typeof item.hours === 'object' ? item.hours[language] : item.hours}
                                     </span>
@@ -136,7 +136,7 @@ export default function Footer() {
             </div>
 
             <div className="border-t border-gray-800/50 relative">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-6" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-gray-500 text-sm flex items-center gap-1">
                             © {new Date().getFullYear()} GentleCutx. {t.footer.rights}

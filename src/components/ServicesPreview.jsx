@@ -19,7 +19,7 @@ export default function ServicesPreview() {
                 <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8 relative" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div
                     ref={ref}
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -31,7 +31,7 @@ export default function ServicesPreview() {
                     <p className="section-subtitle">{t.services.subtitle}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" style={{ display: 'grid', gap: '1.5rem' }}>
                     {featuredServices.map((service, index) => (
                         <div
                             key={service.id}
@@ -41,9 +41,9 @@ export default function ServicesPreview() {
                             {/* Glow effect on hover */}
                             <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:border-secondary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col h-full">
+                            <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:border-secondary/30 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col h-full overflow-visible">
                                 {/* Price badge */}
-                                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-secondary to-accent text-primary text-lg font-bold px-4 py-1.5 rounded-full shadow-lg">
+                                <div className="absolute -top-3 right-3 bg-gradient-to-r from-secondary to-accent text-primary text-lg font-bold px-4 py-1.5 rounded-full shadow-lg z-10">
                                     {service.price}€
                                 </div>
 

@@ -47,7 +47,7 @@ export default function SpecialOffers() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-3xl" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="max-w-7xl px-4 sm:px-6 lg:px-8 relative" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div
                     ref={ref}
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -57,10 +57,10 @@ export default function SpecialOffers() {
                         {t.offers.label}
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{t.offers.title}</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg">{t.offers.subtitle}</p>
+                    <p className="text-gray-300 max-w-2xl mx-auto text-lg">{t.offers.subtitle}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ display: 'grid', gap: '2rem' }}>
                     {offers.map((offer, index) => (
                         <div
                             key={offer.id}
@@ -70,9 +70,9 @@ export default function SpecialOffers() {
                             {/* Animated glow */}
                             <div className={`absolute inset-0 bg-gradient-to-r ${offer.gradient} rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-all duration-500 group-hover:scale-105`} />
 
-                            <div className="relative bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col">
+                            <div className="relative bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col overflow-visible">
                                 {/* Discount badge */}
-                                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                                <div className="absolute -top-3 right-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg z-10">
                                     {language === 'sq' ? 'Kurse' : 'Save'} {offer.discount}
                                 </div>
 
@@ -81,7 +81,7 @@ export default function SpecialOffers() {
                                 </div>
 
                                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-secondary transition-colors">{offer.title}</h3>
-                                <p className="text-gray-400 mb-6 flex-grow">{offer.description}</p>
+                                <p className="text-gray-300 mb-6 flex-grow">{offer.description}</p>
 
                                 <div className="bg-gray-900/60 rounded-xl px-5 py-3 mb-6 flex items-center justify-between">
                                     <span className="text-xs text-gray-500 uppercase tracking-wider">{t.offers.useCode}</span>
