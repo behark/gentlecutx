@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { format, addDays, isSameDay } from 'date-fns';
 import { Clock, User, Calendar, ChevronDown, ChevronUp, X, Check, ArrowRight, ArrowLeft } from 'lucide-react';
 import { services, barbers } from '../data/salonData';
@@ -24,6 +24,8 @@ export default function BookingSystem() {
     const [expandedCategory, setExpandedCategory] = useState(services[0]?.id);
     const [customerInfo, setCustomerInfo] = useState({ name: '', phone: '', email: '' });
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [submitError, setSubmitError] = useState(null);
 
     const availableDates = useMemo(() => {
         const dates = [];
@@ -49,9 +51,40 @@ export default function BookingSystem() {
         });
     };
 
-    const handleSubmit = () => {
-        setShowConfirmation(true);
-    };
+    const handleSubmit = useCallback(async () => {
+        setSubmitting(true);
+        setSubmitError(null);
+
+        try {
+            const response = await fetch('/api/booking', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    services: selectedServices.map(s => ({
+                        name: localize(s.name, language),
+                        price: s.price,
+                        duration: s.duration,
+                    })),
+                    barber: selectedBarber ? { name: selectedBarber.name } : null,
+                    date: format(selectedDate, 'EEEE, MMMM d, yyyy'),
+                    time: selectedTime,
+                    customer: customerInfo,
+                    totalPrice,
+                    totalDuration,
+                }),
+            });
+
+            if (!response.ok) throw new Error();
+
+            setShowConfirmation(true);
+        } catch {
+            setSubmitError(language === 'sq'
+                ? 'Rezervimi dështoi. Ju lutemi provoni përsëri.'
+                : 'Booking failed. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
+    }, [selectedServices, selectedBarber, selectedDate, selectedTime, customerInfo, totalPrice, totalDuration, language]);
 
     const handleCloseConfirmation = () => {
         setShowConfirmation(false);
@@ -349,6 +382,12 @@ export default function BookingSystem() {
                         />
                     </div>
 
+                    {submitError && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm mb-4">
+                            {submitError}
+                        </div>
+                    )}
+
                     <div className="mt-8 flex justify-between">
                         <button
                             onClick={() => setStep(3)}
@@ -358,10 +397,14 @@ export default function BookingSystem() {
                         </button>
                         <button
                             onClick={handleSubmit}
-                            disabled={!customerInfo.name || !customerInfo.phone}
+                            disabled={!customerInfo.name || !customerInfo.phone || submitting}
                             className="bg-secondary hover:bg-accent text-primary px-8 py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                         >
-                            {t.booking.confirmBooking} <Check className="h-5 w-5" />
+                            {submitting
+                                ? (language === 'sq' ? 'Duke dërguar...' : 'Submitting...')
+                                : t.booking.confirmBooking
+                            }
+                            {!submitting && <Check className="h-5 w-5" />}
                         </button>
                     </div>
                 </div>

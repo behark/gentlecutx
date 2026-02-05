@@ -7,11 +7,32 @@ export default function ContactPage() {
     const { language } = useLanguage();
     const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setSending(true);
+        setError(null);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error();
+
+            setSubmitted(true);
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } catch {
+            setError(language === 'sq'
+                ? 'Dërgimi dështoi. Ju lutemi provoni përsëri.'
+                : 'Failed to send message. Please try again.');
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -168,11 +189,22 @@ export default function ContactPage() {
                                         />
                                     </div>
 
+                                    {error && (
+                                        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
+                                            {error}
+                                        </div>
+                                    )}
+
                                     <button
                                         type="submit"
-                                        className="w-full bg-secondary hover:bg-accent text-primary py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors"
+                                        disabled={sending}
+                                        className="w-full bg-secondary hover:bg-accent text-primary py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                                     >
-                                        {language === 'sq' ? 'Dërgo Mesazhin' : 'Send Message'} <Send className="h-5 w-5" />
+                                        {sending
+                                            ? (language === 'sq' ? 'Duke dërguar...' : 'Sending...')
+                                            : (language === 'sq' ? 'Dërgo Mesazhin' : 'Send Message')
+                                        }
+                                        {!sending && <Send className="h-5 w-5" />}
                                     </button>
                                 </form>
                             )}
