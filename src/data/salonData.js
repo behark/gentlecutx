@@ -6,8 +6,8 @@ export const salonInfo = {
         en: "GentleCutx was founded with a simple vision: to provide premium barbershop services in a modern, welcoming environment. Our team of certified barbers brings years of experience and a passion for their craft."
     },
     address: "Rruga Agim Ramadani, Prishtinë, Kosovë",
-    phone: "+383 44 123 456",
-    whatsapp: "+38344123456",
+    phone: "+383 49 619 080",
+    whatsapp: "+38649619080",
     email: "info@gentlecutx.com",
     instagram: "https://instagram.com/gentlecutx",
     facebook: "https://facebook.com/gentlecutx",

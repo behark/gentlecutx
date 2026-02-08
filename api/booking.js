@@ -122,12 +122,12 @@ export default async function handler(req, res) {
                             </div>
                             <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px; text-align: center; margin-bottom: 20px;">
                                 <p style="color: #1e40af; margin: 0; font-size: 14px;">
-                                    Need to change or cancel? Call us at <strong>+383 44 123 456</strong> or reply to this email.
+                                    Need to change or cancel? Call us at <strong>+383 49 619 080</strong> or reply to this email.
                                 </p>
                             </div>
                             <div style="text-align: center;">
                                 <p style="color: #6b7280; font-size: 14px; margin-bottom: 4px;">Rruga Agim Ramadani, Prishtine, Kosove</p>
-                                <p style="color: #6b7280; font-size: 14px; margin: 0;">+383 44 123 456</p>
+                                <p style="color: #6b7280; font-size: 14px; margin: 0;">+383 49 619 080</p>
                             </div>
                         </div>
                     </div>
