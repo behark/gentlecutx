@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Scissors } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
+import { useTranslation } from 'react-i18next';
 import LanguageToggle from './LanguageToggle';
 
 export default function Navbar() {
@@ -10,7 +10,7 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const navRef = useRef(null);
 
     // Handle scroll detection
@@ -61,11 +61,11 @@ export default function Navbar() {
     }, [location.pathname]);
 
     const navLinks = [
-        { name: t.nav.home, path: '/' },
-        { name: t.nav.services, path: '/services' },
-        { name: t.nav.booking, path: '/booking' },
-        { name: t.nav.about, path: '/about' },
-        { name: t.nav.contact, path: '/contact' },
+        { name: t('nav.home'), path: '/' },
+        { name: t('nav.services'), path: '/services' },
+        { name: t('nav.booking'), path: '/booking' },
+        { name: t('nav.about'), path: '/about' },
+        { name: t('nav.contact'), path: '/contact' },
     ];
 
     const isActive = (path) => location.pathname === path;
@@ -76,7 +76,7 @@ export default function Navbar() {
             className={`fixed w-full z-50 transition-all duration-500 ${scrolled
                 ? 'bg-primary/95 backdrop-blur-xl shadow-2xl border-b border-secondary/10'
                 : 'bg-gradient-to-b from-primary/80 to-transparent'
-            }`}
+                }`}
         >
             <div className="max-w-7xl px-4 sm:px-6 lg:px-8" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                 <div className="flex items-center justify-between h-20">
@@ -100,7 +100,7 @@ export default function Navbar() {
                                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary ${isActive(link.path)
                                     ? 'text-secondary bg-secondary/10'
                                     : 'text-gray-300 hover:text-white hover:bg-white/5'
-                                }`}
+                                    }`}
                             >
                                 {link.name}
                                 {isActive(link.path) && (
@@ -113,7 +113,7 @@ export default function Navbar() {
                             to="/booking"
                             className="bg-gradient-to-r from-secondary to-accent text-primary px-5 py-2.5 rounded-xl font-semibold shadow-lg shadow-secondary/25 hover:shadow-xl hover:shadow-secondary/40 hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-primary"
                         >
-                            {t.nav.bookAppointment}
+                            {t('nav.bookAppointment')}
                         </Link>
                     </div>
 
@@ -131,9 +131,8 @@ export default function Navbar() {
                 {/* Mobile menu with animation */}
                 <div
                     id="mobile-menu"
-                    className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-                        isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                    className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}
                     role="navigation"
                 >
                     <div className="pb-4 bg-primary/95 backdrop-blur-md">
@@ -145,7 +144,7 @@ export default function Navbar() {
                                 className={`block py-3 px-4 text-sm font-medium transition-colors focus:outline-none focus:bg-secondary/20 ${isActive(link.path)
                                     ? 'text-secondary bg-gray-800/50 border-l-2 border-secondary'
                                     : 'text-gray-300 hover:text-secondary hover:bg-gray-800/50'
-                                }`}
+                                    }`}
                             >
                                 {link.name}
                             </Link>
@@ -158,7 +157,7 @@ export default function Navbar() {
                             onClick={() => setIsOpen(false)}
                             className="block mx-4 mt-4 bg-gradient-to-r from-secondary to-accent text-primary text-center px-6 py-3 rounded-xl font-semibold focus:outline-none focus:ring-2 focus:ring-white"
                         >
-                            {t.nav.bookAppointment}
+                            {t('nav.bookAppointment')}
                         </Link>
                     </div>
                 </div>

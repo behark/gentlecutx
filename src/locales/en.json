@@ -1,0 +1,242 @@
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "booking": "Book Now",
+        "about": "About",
+        "contact": "Contact",
+        "bookAppointment": "Book Appointment"
+    },
+    "hero": {
+        "subtitle": "PREMIUM BARBERSHOP",
+        "title1": "Your Style,",
+        "title2": "Our Craft",
+        "description": "Experience premium grooming in the heart of Prishtina. Our expert barbers combine traditional techniques with modern style.",
+        "bookNow": "Book Now",
+        "viewServices": "View Services",
+        "location": "Prishtina, Kosovo",
+        "clients": "clients",
+        "today": "Today",
+        "closed": "Closed",
+        "scrollToExplore": "Scroll to explore"
+    },
+    "gallery": {
+        "label": "Gallery",
+        "title": "Our Salon",
+        "subtitle": "Step into our modern space designed for your comfort and style",
+        "clickToEnlarge": "Click to enlarge"
+    },
+    "services": {
+        "label": "What We Offer",
+        "title": "Our Services",
+        "subtitle": "From classic cuts to premium grooming packages, we offer a full range of services",
+        "duration": "min",
+        "bookNow": "Book Now",
+        "viewAll": "View All Services",
+        "ctaTitle": "Ready to book?",
+        "ctaSubtitle": "Schedule your appointment online in just a few clicks",
+        "ctaButton": "Book Your Appointment",
+        "categories": {
+            "haircuts": "Haircuts",
+            "beard": "Beard & Shave",
+            "packages": "Packages"
+        }
+    },
+    "offers": {
+        "label": "Limited Time Offers",
+        "title": "Special Deals",
+        "subtitle": "Take advantage of our exclusive offers and save on premium services",
+        "useCode": "Use code:",
+        "bookNow": "Book Now",
+        "bookAppointment": "Book Your Appointment",
+        "save": "Save",
+        "items": {
+            "firstVisit": {
+                "title": "First Visit Special",
+                "description": "20% off your first haircut"
+            },
+            "vipPackage": {
+                "title": "VIP Package Deal",
+                "description": "Complete grooming for €40 (save €10)"
+            },
+            "referFriend": {
+                "title": "Refer a Friend",
+                "description": "Both get 15% off next visit"
+            }
+        }
+    },
+    "whyChooseUs": {
+        "label": "Why Us?",
+        "title": "Why Choose Us",
+        "subtitle": "Discover the reasons why our clients trust us for their style",
+        "features": {
+            "certifiedBarbers": {
+                "title": "Certified Barbers",
+                "description": "Our team consists of trained professionals with years of experience"
+            },
+            "easyBooking": {
+                "title": "Easy Booking",
+                "description": "Book online 24/7 and choose the time that suits you"
+            },
+            "premiumHygiene": {
+                "title": "Premium Hygiene",
+                "description": "Highest standards of cleanliness and sterilization"
+            },
+            "qualityProducts": {
+                "title": "Quality Products",
+                "description": "We only use premium products for excellent results"
+            },
+            "pleasantAtmosphere": {
+                "title": "Pleasant Atmosphere",
+                "description": "Relaxing environment where you can enjoy your experience"
+            },
+            "personalCare": {
+                "title": "Personal Care",
+                "description": "Every client is treated with special attention and care"
+            }
+        }
+    },
+    "team": {
+        "label": "Our Experts",
+        "title": "Meet The Team",
+        "subtitle": "Talented barbers with a passion for their craft",
+        "experience": "years experience"
+    },
+    "stats": {
+        "happyClients": "Happy Clients",
+        "yearsExperience": "Years Experience",
+        "haircutsDone": "Haircuts Done",
+        "satisfaction": "Satisfaction"
+    },
+    "reviews": {
+        "label": "Testimonials",
+        "title": "What Our Clients Say",
+        "reviewsCount": "reviews"
+    },
+    "booking": {
+        "title": "Book Your Appointment",
+        "subtitle": "Select your services, barber, and preferred time",
+        "steps": {
+            "services": "Services",
+            "barber": "Barber",
+            "datetime": "Date & Time",
+            "details": "Details"
+        },
+        "selectServices": "Select Services",
+        "selectedServices": "services selected",
+        "total": "Total",
+        "duration": "Duration",
+        "continue": "Continue",
+        "back": "Back",
+        "selectBarber": "Select Barber",
+        "selectServicesSubtitle": "Select one or more services",
+        "selectBarberSubtitle": "Select a barber or leave it to us",
+        "anyBarber": "Any Available Barber",
+        "anyBarberDesc": "We'll assign the first available barber",
+        "selectDate": "Select Date",
+        "selectTime": "Select Time",
+        "selectDateTimeSubtitle": "Select your preferred appointment slot",
+        "morning": "Morning",
+        "afternoon": "Afternoon",
+        "yourDetails": "Your Details",
+        "summary": "Booking Summary",
+        "name": "Full Name",
+        "phone": "Phone Number",
+        "email": "Email (optional)",
+        "confirmBooking": "Confirm Booking",
+        "confirmSubtitle": "Review and complete your reservation",
+        "selected": "Selected",
+        "choose": "Choose",
+        "noSlots": "No available slots",
+        "submitting": "Submitting...",
+        "bookingFailed": "Booking failed. Please try again."
+    },
+    "confirmation": {
+        "title": "Booking Confirmed!",
+        "subtitle": "Thank you for choosing GentleCutx",
+        "details": "Booking Details",
+        "date": "Date",
+        "time": "Time",
+        "barber": "Barber",
+        "services": "Services",
+        "total": "Total",
+        "reminder": "We'll send a reminder to your phone.",
+        "emailNotice": "A confirmation has been sent to",
+        "done": "Done"
+    },
+    "about": {
+        "title": "About GentleCutx",
+        "subtitle": "Where style meets craftsmanship",
+        "story": "Our Story",
+        "storyText": "At GentleCutx, we believe that grooming is more than just a haircut – it's an experience. Our mission is to provide exceptional service in a welcoming environment where every client feels valued and leaves looking their absolute best.",
+        "mission": "Our Mission",
+        "hours": "Opening Hours",
+        "closed": "Closed",
+        "yearsOfExcellence": "Years of Excellence",
+        "clientReviews": "Client Reviews",
+        "stats": {
+            "happyClients": "Happy Clients",
+            "yearsExperience": "Years Experience",
+            "averageRating": "Average Rating",
+            "onlineBooking": "Online Booking"
+        }
+    },
+    "contact": {
+        "title": "Contact Us",
+        "subtitle": "Have questions? Send us a message and we'll get back to you soon",
+        "sendMessage": "Send Us a Message",
+        "messageSent": "Message Sent!",
+        "messageSuccess": "We'll get back to you as soon as possible.",
+        "sendAnother": "Send another message",
+        "sending": "Sending...",
+        "sendFailed": "Failed to send message. Please try again.",
+        "viewAllHours": "View all hours on About page",
+        "ourLocation": "GentleCutx – our location",
+        "form": {
+            "name": "Your Name",
+            "email": "Email Address",
+            "phone": "Phone",
+            "message": "Message",
+            "send": "Send Message"
+        },
+        "info": {
+            "title": "Contact Information",
+            "address": "Address",
+            "phone": "Phone",
+            "email": "Email",
+            "hours": "Hours"
+        },
+        "findUs": "Find Us"
+    },
+    "footer": {
+        "description": "Premium barbershop experience with skilled professionals dedicated to your style.",
+        "quickLinks": "Quick Links",
+        "contactInfo": "Contact Info",
+        "openingHours": "Opening Hours",
+        "rights": "All rights reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "ctaTitle": "Ready for your new style?",
+        "ctaSubtitle": "Book now and benefit from our special offers",
+        "ctaButton": "Book Now"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last updated: January 2026"
+    },
+    "terms": {
+        "title": "Terms of Service",
+        "lastUpdated": "Last updated: January 2026"
+    },
+    "notFound": {
+        "title": "Page Not Found",
+        "description": "Looks like this page got a little too much off the top. Let's get you back to familiar territory.",
+        "backHome": "Back to Home",
+        "goBack": "Go Back"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "close": "Close"
+    }
+}

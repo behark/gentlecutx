@@ -2,17 +2,18 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Star, MapPin, Clock, Scissors, Sparkles } from 'lucide-react';
 import { salonInfo, openingHours } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
+import { useTranslation } from 'react-i18next';
+import { localize } from '../utils/localize';
 
 export default function Hero() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
 
     const todayIndex = new Date().getDay();
     const todayHoursData = openingHours[todayIndex === 0 ? 6 : todayIndex - 1];
     const todayHoursText = todayHoursData.isOpen
-        ? (typeof todayHoursData.hours === 'object' ? todayHoursData.hours[language] : todayHoursData.hours)
-        : (language === 'sq' ? 'Mbyllur' : 'Closed');
+        ? localize(todayHoursData.hours, language)
+        : t('hero.closed');
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -52,21 +53,21 @@ export default function Hero() {
                             ))}
                         </div>
                         <span className="text-white/90 text-sm font-medium">
-                            {salonInfo.rating} • {salonInfo.reviewCount}+ {language === 'sq' ? 'klientë' : 'clients'}
+                            {salonInfo.rating} • {salonInfo.reviewCount}+ {t('hero.clients')}
                         </span>
                     </div>
 
-                    <p className="text-secondary font-semibold tracking-widest text-sm mb-4 uppercase">{t.hero.subtitle}</p>
+                    <p className="text-secondary font-semibold tracking-widest text-sm mb-4 uppercase">{t('hero.subtitle')}</p>
 
                     <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-                        {t.hero.title1} <br />
+                        {t('hero.title1')} <br />
                         <span className="text-gradient-animate">
-                            {t.hero.title2}
+                            {t('hero.title2')}
                         </span>
                     </h1>
 
                     <p className="text-xl text-gray-300 mb-10 max-w-xl leading-relaxed">
-                        {t.hero.description}
+                        {t('hero.description')}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -74,25 +75,25 @@ export default function Hero() {
                             to="/booking"
                             className="btn-primary btn-glow inline-flex items-center justify-center text-lg group"
                         >
-                            {t.hero.bookNow}
+                            {t('hero.bookNow')}
                             <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link
                             to="/services"
                             className="btn-outline inline-flex items-center justify-center text-lg hover:scale-105 transition-transform"
                         >
-                            {t.hero.viewServices}
+                            {t('hero.viewServices')}
                         </Link>
                     </div>
 
                     <div className="flex flex-wrap gap-6 text-sm">
                         <div className="flex items-center gap-2 text-gray-300 glass-premium px-4 py-2 rounded-full">
                             <MapPin className="h-4 w-4 text-secondary" />
-                            <span>{t.hero.location}</span>
+                            <span>{t('hero.location')}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-300 glass-premium px-4 py-2 rounded-full">
                             <Clock className="h-4 w-4 text-secondary" />
-                            <span>{language === 'sq' ? 'Sot' : 'Today'}: {todayHoursText}</span>
+                            <span>{t('hero.today')}: {todayHoursText}</span>
                         </div>
                     </div>
                 </div>
@@ -100,7 +101,7 @@ export default function Hero() {
 
             {/* Animated scroll indicator */}
             <div className="absolute bottom-44 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-                <span className="text-white/50 text-xs uppercase tracking-widest">{language === 'sq' ? 'Zbulo më shumë' : 'Scroll to explore'}</span>
+                <span className="text-white/50 text-xs uppercase tracking-widest">{t('hero.scrollToExplore')}</span>
                 <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2">
                     <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce"></div>
                 </div>

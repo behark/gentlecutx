@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight, Gift, Percent } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
+import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function SpecialOffers() {
-    const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const { ref, isVisible } = useScrollReveal(0.1);
 
     const offers = [
         {
             id: 1,
-            title: t.offers.items.firstVisit.title,
-            description: t.offers.items.firstVisit.description,
+            titleKey: 'offers.items.firstVisit.title',
+            descKey: 'offers.items.firstVisit.description',
             code: "WELCOME20",
             discount: "20%",
             icon: Gift,
@@ -21,8 +19,8 @@ export default function SpecialOffers() {
         },
         {
             id: 2,
-            title: t.offers.items.vipPackage.title,
-            description: t.offers.items.vipPackage.description,
+            titleKey: 'offers.items.vipPackage.title',
+            descKey: 'offers.items.vipPackage.description',
             code: "VIPSAVE",
             discount: "€10",
             icon: Sparkles,
@@ -30,8 +28,8 @@ export default function SpecialOffers() {
         },
         {
             id: 3,
-            title: t.offers.items.referFriend.title,
-            description: t.offers.items.referFriend.description,
+            titleKey: 'offers.items.referFriend.title',
+            descKey: 'offers.items.referFriend.description',
             code: "FRIEND15",
             discount: "15%",
             icon: Percent,
@@ -54,10 +52,10 @@ export default function SpecialOffers() {
                 >
                     <div className="inline-flex items-center gap-2 bg-secondary/20 text-secondary px-5 py-2.5 rounded-full text-sm font-medium mb-4 shimmer">
                         <Sparkles className="h-4 w-4" />
-                        {t.offers.label}
+                        {t('offers.label')}
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{t.offers.title}</h2>
-                    <p className="text-gray-300 max-w-2xl mx-auto text-lg">{t.offers.subtitle}</p>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">{t('offers.title')}</h2>
+                    <p className="text-gray-300 max-w-2xl mx-auto text-lg">{t('offers.subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ display: 'grid', gap: '2rem' }}>
@@ -73,18 +71,18 @@ export default function SpecialOffers() {
                             <div className="relative bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:border-secondary/50 transition-all duration-500 hover:-translate-y-2 h-full flex flex-col overflow-visible">
                                 {/* Discount badge */}
                                 <div className="absolute -top-3 right-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg z-10">
-                                    {language === 'sq' ? 'Kurse' : 'Save'} {offer.discount}
+                                    {t('offers.save')} {offer.discount}
                                 </div>
 
                                 <div className={`w-16 h-16 bg-gradient-to-br ${offer.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
                                     <offer.icon className="h-8 w-8 text-white" />
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-secondary transition-colors">{offer.title}</h3>
-                                <p className="text-gray-300 mb-6 flex-grow">{offer.description}</p>
+                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-secondary transition-colors">{t(offer.titleKey)}</h3>
+                                <p className="text-gray-300 mb-6 flex-grow">{t(offer.descKey)}</p>
 
                                 <div className="bg-gray-900/60 rounded-xl px-5 py-3 mb-6 flex items-center justify-between">
-                                    <span className="text-xs text-gray-500 uppercase tracking-wider">{t.offers.useCode}</span>
+                                    <span className="text-xs text-gray-500 uppercase tracking-wider">{t('offers.useCode')}</span>
                                     <span className="text-secondary font-mono font-bold text-lg tracking-wider">{offer.code}</span>
                                 </div>
 
@@ -92,7 +90,7 @@ export default function SpecialOffers() {
                                     to="/booking"
                                     className="flex items-center justify-center text-primary bg-gradient-to-r from-secondary to-accent font-semibold py-3 px-6 rounded-xl transition-all hover:shadow-lg hover:shadow-secondary/30 group/link"
                                 >
-                                    {t.offers.bookNow}
+                                    {t('offers.bookNow')}
                                     <ArrowRight className="h-5 w-5 ml-2 group-hover/link:translate-x-1 transition-transform" />
                                 </Link>
                             </div>
@@ -105,7 +103,7 @@ export default function SpecialOffers() {
                         to="/booking"
                         className="btn-primary btn-glow inline-flex items-center gap-2 text-lg group"
                     >
-                        {t.offers.bookAppointment}
+                        {t('offers.bookAppointment')}
                         <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>

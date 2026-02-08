@@ -2,26 +2,26 @@ import { Star, Award, Users, Clock } from 'lucide-react';
 import { salonInfo, openingHours, barbers, reviews } from '../data/salonData';
 import TeamSection from '../components/TeamSection';
 import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import { localize } from '../utils/localize';
-import { translations } from '../data/translations';
 
 export default function AboutPage() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const stats = [
-        { icon: Users, value: '5000+', label: language === 'sq' ? 'Klientë të Kënaqur' : 'Happy Clients' },
-        { icon: Award, value: '10+', label: language === 'sq' ? 'Vite Përvojë' : 'Years Experience' },
-        { icon: Star, value: '5.0', label: language === 'sq' ? 'Vlerësimi Mesatar' : 'Average Rating' },
-        { icon: Clock, value: '24/7', label: language === 'sq' ? 'Rezervim Online' : 'Online Booking' },
+        { icon: Users, value: '5000+', labelKey: 'about.stats.happyClients' },
+        { icon: Award, value: '10+', labelKey: 'about.stats.yearsExperience' },
+        { icon: Star, value: '5.0', labelKey: 'about.stats.averageRating' },
+        { icon: Clock, value: '24/7', labelKey: 'about.stats.onlineBooking' },
     ];
 
     return (
         <main className="pt-20">
             <section className="bg-primary py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t.about.title}</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t('about.title')}</h1>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        {t.about.subtitle}
+                        {t('about.subtitle')}
                     </p>
                 </div>
             </section>
@@ -30,15 +30,10 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-6">{t.about.story}</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-6">{t('about.story')}</h2>
                             <div className="prose prose-lg text-gray-600">
                                 <p className="mb-4">{localize(salonInfo.description, language)}</p>
-                                <p>
-                                    {language === 'sq'
-                                        ? 'Në GentleCutx, ne besojmë se kujdesi personal është më shumë se thjesht një prerje flokësh – është një përvojë. Misioni ynë është të ofrojmë shërbim të jashtëzakonshëm në një ambient mikpritës ku çdo klient ndihet i vlerësuar dhe largohet duke u dukur më i mirë.'
-                                        : 'At GentleCutx, we believe that grooming is more than just a haircut – it\'s an experience. Our mission is to provide exceptional service in a welcoming environment where every client feels valued and leaves looking their absolute best.'
-                                    }
-                                </p>
+                                <p>{t('about.storyText')}</p>
                             </div>
                         </div>
                         <div className="relative">
@@ -51,7 +46,7 @@ export default function AboutPage() {
                             </div>
                             <div className="absolute -bottom-6 -left-6 bg-secondary text-primary p-6 rounded-xl shadow-lg">
                                 <div className="text-4xl font-bold">10+</div>
-                                <div className="text-sm font-medium">{language === 'sq' ? 'Vite Ekselence' : 'Years of Excellence'}</div>
+                                <div className="text-sm font-medium">{t('about.yearsOfExcellence')}</div>
                             </div>
                         </div>
                     </div>
@@ -65,7 +60,7 @@ export default function AboutPage() {
                             <div key={index} className="text-center">
                                 <stat.icon className="h-10 w-10 text-secondary mx-auto mb-4" />
                                 <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                                <div className="text-gray-600">{stat.label}</div>
+                                <div className="text-gray-600">{t(stat.labelKey)}</div>
                             </div>
                         ))}
                     </div>
@@ -78,11 +73,11 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-8">{t.about.hours}</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-8">{t('about.hours')}</h2>
                             <div className="bg-gray-50 rounded-xl p-6">
                                 {openingHours.map((item) => (
                                     <div
-                                        key={typeof item.day === 'object' ? item.day[language] : item.day}
+                                        key={localize(item.day, language)}
                                         className="flex justify-between py-3 border-b border-gray-200 last:border-0"
                                     >
                                         <span className="font-medium text-primary">{localize(item.day, language)}</span>
@@ -95,7 +90,7 @@ export default function AboutPage() {
                         </div>
 
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-8">{language === 'sq' ? 'Vlerësimet e Klientëve' : 'Client Reviews'}</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-8">{t('about.clientReviews')}</h2>
                             <div className="space-y-4">
                                 {reviews.slice(0, 3).map((review) => (
                                     <div key={review.id} className="bg-gray-50 rounded-xl p-6">

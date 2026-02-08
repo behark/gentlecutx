@@ -2,13 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { reviews, salonInfo } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import { localize } from '../utils/localize';
-import { translations } from '../data/translations';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function ReviewsSection() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const { ref, isVisible } = useScrollReveal(0.1);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -40,9 +40,9 @@ export default function ReviewsSection() {
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 >
                     <span className="inline-flex items-center gap-2 text-secondary font-semibold text-sm tracking-wider uppercase mb-3 bg-secondary/10 px-4 py-2 rounded-full">
-                        <MessageSquare className="h-4 w-4" /> {t.reviews.label}
+                        <MessageSquare className="h-4 w-4" /> {t('reviews.label')}
                     </span>
-                    <h2 className="section-title">{t.reviews.title}</h2>
+                    <h2 className="section-title">{t('reviews.title')}</h2>
                     <div className="flex items-center justify-center gap-3 mt-6">
                         <div className="flex">
                             {[...Array(5)].map((_, i) => (
@@ -50,7 +50,7 @@ export default function ReviewsSection() {
                             ))}
                         </div>
                         <span className="text-3xl font-bold text-gradient-animate">{salonInfo.rating}</span>
-                        <span className="text-gray-500">({salonInfo.reviewCount} {t.reviews.reviewsCount})</span>
+                        <span className="text-gray-500">({salonInfo.reviewCount} {t('reviews.reviewsCount')})</span>
                     </div>
                 </div>
 

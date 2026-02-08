@@ -1,16 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Camera, X, ZoomIn } from 'lucide-react';
 import { galleryImages } from '../data/salonData';
-import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
+import { useTranslation } from 'react-i18next';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Gallery() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-    const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const { ref, isVisible } = useScrollReveal(0.2);
 
     const nextSlide = useCallback(() => {
@@ -55,10 +53,10 @@ export default function Gallery() {
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 >
                     <span className="inline-flex items-center gap-2 text-secondary font-semibold text-sm tracking-wider uppercase mb-3 bg-secondary/10 px-4 py-2 rounded-full">
-                        <Camera className="h-4 w-4" /> {t.gallery.label}
+                        <Camera className="h-4 w-4" /> {t('gallery.label')}
                     </span>
-                    <h2 className="section-title">{t.gallery.title}</h2>
-                    <p className="section-subtitle">{t.gallery.subtitle}</p>
+                    <h2 className="section-title">{t('gallery.title')}</h2>
+                    <p className="section-subtitle">{t('gallery.subtitle')}</p>
                 </div>
 
                 <div
@@ -86,7 +84,7 @@ export default function Gallery() {
                                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8">
                                         <div className="flex items-center gap-2 text-white bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
                                             <ZoomIn className="h-5 w-5" />
-                                            <span className="text-sm font-medium">{language === 'sq' ? 'Kliko për të zmadhuar' : 'Click to enlarge'}</span>
+                                            <span className="text-sm font-medium">{t('gallery.clickToEnlarge')}</span>
                                         </div>
                                     </div>
                                 </div>

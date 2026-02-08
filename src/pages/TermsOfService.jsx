@@ -1,7 +1,9 @@
 import { FileText, Mail, Phone, MapPin } from 'lucide-react';
 import { salonInfo } from '../data/salonData';
+import { useTranslation } from 'react-i18next';
 
 export default function TermsOfService() {
+    const { t } = useTranslation();
     return (
         <main className="pt-24 pb-20 bg-gray-50 min-h-screen">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,8 +11,8 @@ export default function TermsOfService() {
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-6">
                         <FileText className="h-8 w-8 text-secondary" />
                     </div>
-                    <h1 className="text-4xl font-bold text-primary mb-4">Terms of Service</h1>
-                    <p className="text-gray-600">Last updated: January 2026</p>
+                    <h1 className="text-4xl font-bold text-primary mb-4">{t('terms.title')}</h1>
+                    <p className="text-gray-600">{t('terms.lastUpdated')}</p>
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 space-y-8">

@@ -1,37 +1,37 @@
-import { Users, Award, Calendar, ThumbsUp } from 'lucide-react';
+import { Users, Award, Calendar, TrendingUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useCountUp } from '../hooks/useScrollReveal';
-import { useLanguage } from '../context/LanguageContext';
 
 export default function StatsSection() {
-    const { language } = useLanguage();
+    const { t } = useTranslation();
 
     const stats = [
         {
             icon: Users,
             value: 5000,
             suffix: '+',
-            label: language === 'sq' ? 'Klientë të Kënaqur' : 'Happy Clients',
+            labelKey: 'stats.happyClients',
             gradient: 'from-blue-500 to-cyan-500'
         },
         {
             icon: Award,
             value: 10,
             suffix: '+',
-            label: language === 'sq' ? 'Vite Përvojë' : 'Years Experience',
+            labelKey: 'stats.yearsExperience',
             gradient: 'from-secondary to-accent'
         },
         {
             icon: Calendar,
             value: 15000,
             suffix: '+',
-            label: language === 'sq' ? 'Prerje të Kryera' : 'Haircuts Done',
+            labelKey: 'stats.haircutsDone',
             gradient: 'from-purple-500 to-pink-500'
         },
         {
-            icon: ThumbsUp,
-            value: 100,
+            icon: TrendingUp,
+            value: 99,
             suffix: '%',
-            label: language === 'sq' ? 'Kënaqësi' : 'Satisfaction',
+            labelKey: 'stats.satisfaction',
             gradient: 'from-green-500 to-emerald-500'
         }
     ];
@@ -57,6 +57,7 @@ export default function StatsSection() {
 function StatCard({ stat, index }) {
     const { count, ref } = useCountUp(stat.value, 2000 + index * 200);
     const Icon = stat.icon;
+    const { t } = useTranslation();
 
     return (
         <div
@@ -70,7 +71,7 @@ function StatCard({ stat, index }) {
                 <span className="count-up">{count.toLocaleString()}</span>
                 <span className="text-secondary">{stat.suffix}</span>
             </div>
-            <p className="text-gray-300 font-medium">{stat.label}</p>
+            <p className="text-gray-600 text-sm font-medium">{t(stat.labelKey)}</p>
         </div>
     );
 }

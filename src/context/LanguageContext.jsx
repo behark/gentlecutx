@@ -1,20 +1,30 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-    const [language, setLanguage] = useState(() => {
-        const saved = localStorage.getItem('gentlecutx-lang');
-        return saved || 'sq';
+    const { i18n } = useTranslation();
+    const [language, setLanguageState] = useState(() => {
+        return localStorage.getItem('language') || 'sq';
     });
 
+    const setLanguage = (lng) => {
+        setLanguageState(lng);
+        i18n.changeLanguage(lng);
+    };
+
     useEffect(() => {
-        localStorage.setItem('gentlecutx-lang', language);
+        localStorage.setItem('language', language);
         document.documentElement.lang = language;
-    }, [language]);
+        if (i18n.language !== language) {
+            i18n.changeLanguage(language);
+        }
+    }, [language, i18n]);
 
     const toggleLanguage = () => {
-        setLanguage(prev => prev === 'sq' ? 'en' : 'sq');
+        const next = language === 'sq' ? 'en' : 'sq';
+        setLanguage(next);
     };
 
     return (

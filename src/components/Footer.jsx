@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import { Scissors, MapPin, Phone, Mail, Instagram, Facebook, ArrowUpRight, Heart } from 'lucide-react';
 import { salonInfo, openingHours } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
+import { useTranslation } from 'react-i18next';
+import { localize } from '../utils/localize';
 
 export default function Footer() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
 
     return (
         <footer className="bg-gradient-to-b from-primary to-primary-dark text-white relative overflow-hidden">
@@ -22,17 +23,17 @@ export default function Footer() {
                     <div className="bg-gradient-to-r from-secondary/20 to-accent/20 backdrop-blur-sm rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 border border-secondary/20">
                         <div>
                             <h3 className="text-2xl md:text-3xl font-bold mb-2">
-                                {language === 'sq' ? 'Gati për stilin tuaj të ri?' : 'Ready for your new style?'}
+                                {t('footer.ctaTitle')}
                             </h3>
                             <p className="text-gray-300">
-                                {language === 'sq' ? 'Rezervo tani dhe përfito nga ofertat tona speciale' : 'Book now and benefit from our special offers'}
+                                {t('footer.ctaSubtitle')}
                             </p>
                         </div>
                         <Link
                             to="/booking"
                             className="btn-primary whitespace-nowrap flex items-center gap-2 group"
                         >
-                            {language === 'sq' ? 'Rezervo Tani' : 'Book Now'}
+                            {t('footer.ctaButton')}
                             <ArrowUpRight className="h-5 w-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </Link>
                     </div>
@@ -51,7 +52,7 @@ export default function Footer() {
                             </span>
                         </Link>
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                            {t.footer.description}
+                            {t('footer.description')}
                         </p>
                         <div className="flex space-x-3">
                             <a href={salonInfo.instagram} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800/50 hover:bg-secondary/20 rounded-xl flex items-center justify-center text-gray-400 hover:text-secondary transition-all hover:scale-110" aria-label="Follow us on Instagram">
@@ -66,15 +67,15 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
                             <span className="w-8 h-0.5 bg-gradient-to-r from-secondary to-accent rounded-full"></span>
-                            {t.footer.quickLinks}
+                            {t('footer.quickLinks')}
                         </h3>
                         <ul className="space-y-3">
                             {[
-                                { to: '/', label: t.nav.home },
-                                { to: '/services', label: t.nav.services },
-                                { to: '/booking', label: t.nav.booking },
-                                { to: '/about', label: t.nav.about },
-                                { to: '/contact', label: t.nav.contact },
+                                { to: '/', label: t('nav.home') },
+                                { to: '/services', label: t('nav.services') },
+                                { to: '/booking', label: t('nav.booking') },
+                                { to: '/about', label: t('nav.about') },
+                                { to: '/contact', label: t('nav.contact') },
                             ].map((link) => (
                                 <li key={link.to}>
                                     <Link
@@ -92,7 +93,7 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
                             <span className="w-8 h-0.5 bg-gradient-to-r from-secondary to-accent rounded-full"></span>
-                            {t.footer.contactInfo}
+                            {t('footer.contactInfo')}
                         </h3>
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3 group">
@@ -119,14 +120,14 @@ export default function Footer() {
                     <div>
                         <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
                             <span className="w-8 h-0.5 bg-gradient-to-r from-secondary to-accent rounded-full"></span>
-                            {t.footer.openingHours}
+                            {t('footer.openingHours')}
                         </h3>
                         <ul className="space-y-2">
                             {openingHours.map((item, index) => (
                                 <li key={index} className="flex justify-between text-sm py-1.5 border-b border-gray-800/50 last:border-0">
-                                    <span className="text-gray-300">{item.day[language] || item.day}</span>
+                                    <span className="text-gray-300">{localize(item.day, language)}</span>
                                     <span className={`font-medium ${item.isOpen ? 'text-secondary' : 'text-gray-500'}`}>
-                                        {typeof item.hours === 'object' ? item.hours[language] : item.hours}
+                                        {localize(item.hours, language)}
                                     </span>
                                 </li>
                             ))}
@@ -139,15 +140,15 @@ export default function Footer() {
                 <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-6" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-gray-500 text-sm flex items-center gap-1">
-                            © {new Date().getFullYear()} GentleCutx. {t.footer.rights}
+                            © {new Date().getFullYear()} GentleCutx. {t('footer.rights')}
                             <Heart className="h-3 w-3 text-secondary fill-current mx-1" />
                         </p>
                         <div className="flex items-center gap-6">
                             <Link to="/privacy" className="text-gray-500 hover:text-secondary text-sm transition-colors underline-animate">
-                                {t.footer.privacy}
+                                {t('footer.privacy')}
                             </Link>
                             <Link to="/terms" className="text-gray-500 hover:text-secondary text-sm transition-colors underline-animate">
-                                {t.footer.terms}
+                                {t('footer.terms')}
                             </Link>
                         </div>
                     </div>

@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { salonInfo, openingHours } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
-import { translations } from '../data/translations';
+import { useTranslation } from 'react-i18next';
+import { localize } from '../utils/localize';
 
 export default function ContactPage() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
     const [sending, setSending] = useState(false);
@@ -29,9 +30,7 @@ export default function ContactPage() {
             setSubmitted(true);
             setFormData({ name: '', email: '', phone: '', message: '' });
         } catch {
-            setError(language === 'sq'
-                ? 'Dërgimi dështoi. Ju lutemi provoni përsëri.'
-                : 'Failed to send message. Please try again.');
+            setError(t('contact.sendFailed'));
         } finally {
             setSending(false);
         }
@@ -42,10 +41,10 @@ export default function ContactPage() {
             <section className="bg-primary py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        {t.contact.title}
+                        {t('contact.title')}
                     </h1>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        {t.contact.subtitle}
+                        {t('contact.subtitle')}
                     </p>
                 </div>
             </section>
@@ -55,7 +54,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div>
                             <h2 className="text-3xl font-bold text-primary mb-8">
-                                {t.contact.info.title}
+                                {t('contact.info.title')}
                             </h2>
 
                             <div className="space-y-6 mb-8">
@@ -64,7 +63,7 @@ export default function ContactPage() {
                                         <MapPin className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">{t.contact.info.address}</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t('contact.info.address')}</h3>
                                         <p className="text-gray-600">{salonInfo.address}</p>
                                     </div>
                                 </div>
@@ -74,7 +73,7 @@ export default function ContactPage() {
                                         <Phone className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">{t.contact.info.phone}</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t('contact.info.phone')}</h3>
                                         <p className="text-gray-600">{salonInfo.phone}</p>
                                     </div>
                                 </div>
@@ -84,7 +83,7 @@ export default function ContactPage() {
                                         <Mail className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">Email</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t('contact.info.email')}</h3>
                                         <p className="text-gray-600">{salonInfo.email}</p>
                                     </div>
                                 </div>
@@ -94,12 +93,12 @@ export default function ContactPage() {
                                         <Clock className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">{t.contact.info.hours}</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t('contact.info.hours')}</h3>
                                         <div className="text-gray-600 text-sm space-y-1">
                                             {openingHours.slice(0, 3).map((item) => (
-                                                <p key={typeof item.day === 'object' ? item.day[language] : item.day}>{typeof item.day === 'object' ? item.day[language] : item.day}: {typeof item.hours === 'object' ? item.hours[language] : item.hours}</p>
+                                                <p key={localize(item.day, language)}>{localize(item.day, language)}: {localize(item.hours, language)}</p>
                                             ))}
-                                            <p className="text-secondary font-medium">{language === 'sq' ? 'Shiko të gjitha oraret në faqen Rreth Nesh' : 'View all hours on About page'}</p>
+                                            <p className="text-secondary font-medium">{t('contact.viewAllHours')}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -107,14 +106,14 @@ export default function ContactPage() {
 
                             <img
                                 src="/storefront-banner.jpeg"
-                                alt={language === 'sq' ? 'GentleCutx – lokacioni ynë' : 'GentleCutx – our location'}
+                                alt={t('contact.ourLocation')}
                                 className="rounded-xl w-full h-64 object-cover object-center"
                             />
                         </div>
 
                         <div>
                             <h2 className="text-3xl font-bold text-primary mb-8">
-                                {language === 'sq' ? 'Na Dërgo Mesazh' : 'Send Us a Message'}
+                                {t('contact.sendMessage')}
                             </h2>
 
                             {submitted ? (
@@ -123,23 +122,23 @@ export default function ContactPage() {
                                         <Send className="h-8 w-8 text-green-600" />
                                     </div>
                                     <h3 className="text-xl font-semibold text-green-800 mb-2">
-                                        {language === 'sq' ? 'Mesazhi u Dërgua!' : 'Message Sent!'}
+                                        {t('contact.messageSent')}
                                     </h3>
                                     <p className="text-green-600">
-                                        {language === 'sq' ? 'Do t\'ju kontaktojmë sa më shpejt të jetë e mundur.' : 'We\'ll get back to you as soon as possible.'}
+                                        {t('contact.messageSuccess')}
                                     </p>
                                     <button
                                         onClick={() => setSubmitted(false)}
                                         className="mt-4 text-green-700 underline"
                                     >
-                                        {language === 'sq' ? 'Dërgo mesazh tjetër' : 'Send another message'}
+                                        {t('contact.sendAnother')}
                                     </button>
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {t.contact.form.name}
+                                            {t('contact.form.name')}
                                         </label>
                                         <input
                                             type="text"
@@ -147,25 +146,25 @@ export default function ContactPage() {
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
-                                            placeholder={t.contact.form.name}
+                                            placeholder={t('contact.form.name')}
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">{t.contact.form.email}</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">{t('contact.form.email')}</label>
                                         <input
                                             type="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
-                                            placeholder={t.contact.form.email}
+                                            placeholder={t('contact.form.email')}
                                         />
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {t.contact.form.phone}
+                                            {t('contact.form.phone')}
                                         </label>
                                         <input
                                             type="tel"
@@ -175,13 +174,13 @@ export default function ContactPage() {
                                                 setFormData({ ...formData, phone: val });
                                             }}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
-                                            placeholder={t.contact.form.phone}
+                                            placeholder={t('contact.form.phone')}
                                         />
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {t.contact.form.message}
+                                            {t('contact.form.message')}
                                         </label>
                                         <textarea
                                             required
@@ -189,7 +188,7 @@ export default function ContactPage() {
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary resize-none"
-                                            placeholder={t.contact.form.message}
+                                            placeholder={t('contact.form.message')}
                                         />
                                     </div>
 
@@ -205,8 +204,8 @@ export default function ContactPage() {
                                         className="w-full bg-secondary hover:bg-accent text-primary py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                                     >
                                         {sending
-                                            ? (language === 'sq' ? 'Duke dërguar...' : 'Sending...')
-                                            : t.contact.form.send
+                                            ? t('contact.sending')
+                                            : t('contact.form.send')
                                         }
                                         {!sending && <Send className="h-5 w-5" />}
                                     </button>

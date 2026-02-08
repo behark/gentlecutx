@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { services } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import { localize } from '../utils/localize';
-import { translations } from '../data/translations';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function ServicesPreview() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const featuredServices = services.flatMap(cat => cat.items).slice(0, 6);
     const { ref, isVisible } = useScrollReveal(0.1);
 
@@ -26,10 +26,10 @@ export default function ServicesPreview() {
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 >
                     <span className="inline-flex items-center gap-2 text-secondary font-semibold text-sm tracking-wider uppercase mb-3 bg-secondary/10 px-4 py-2 rounded-full">
-                        <Sparkles className="h-4 w-4" /> {t.services.label}
+                        <Sparkles className="h-4 w-4" /> {t('services.label')}
                     </span>
-                    <h2 className="section-title">{t.services.title}</h2>
-                    <p className="section-subtitle">{t.services.subtitle}</p>
+                    <h2 className="section-title">{t('services.title')}</h2>
+                    <p className="section-subtitle">{t('services.subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" style={{ display: 'grid', gap: '1.5rem' }}>
@@ -61,13 +61,13 @@ export default function ServicesPreview() {
                                 <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
                                     <div className="flex items-center text-gray-500 text-sm bg-gray-50 px-3 py-1.5 rounded-full">
                                         <Clock className="h-4 w-4 mr-2 text-secondary" />
-                                        {service.duration} {t.services.duration}
+                                        {service.duration} {t('services.duration')}
                                     </div>
                                     <Link
                                         to="/booking"
                                         className="text-secondary hover:text-accent font-semibold text-sm flex items-center group/link bg-secondary/10 px-4 py-2 rounded-full hover:bg-secondary/20 transition-all"
                                     >
-                                        {t.services.bookNow}
+                                        {t('services.bookNow')}
                                         <ArrowRight className="h-4 w-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
@@ -81,7 +81,7 @@ export default function ServicesPreview() {
                         to="/services"
                         className="btn-primary btn-glow inline-flex items-center gap-2 group"
                     >
-                        {t.services.viewAll}
+                        {t('services.viewAll')}
                         <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>

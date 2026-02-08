@@ -1,0 +1,242 @@
+{
+    "nav": {
+        "home": "Ballina",
+        "services": "Shërbimet",
+        "booking": "Rezervo",
+        "about": "Rreth Nesh",
+        "contact": "Kontakti",
+        "bookAppointment": "Rezervo Termin"
+    },
+    "hero": {
+        "subtitle": "BERBERË PREMIUM",
+        "title1": "Stili Yt,",
+        "title2": "Zotësia Jonë",
+        "description": "Përjeto kujdesin premium të flokëve në zemër të Prishtinës. Berberët tonë ekspertë kombinojnë teknikat tradicionale me stilin moderne.",
+        "bookNow": "Rezervo Tani",
+        "viewServices": "Shiko Shërbimet",
+        "location": "Prishtinë, Kosovë",
+        "clients": "klientë",
+        "today": "Sot",
+        "closed": "Mbyllur",
+        "scrollToExplore": "Zbulo më shumë"
+    },
+    "gallery": {
+        "label": "Galeria",
+        "title": "Saloni Ynë",
+        "subtitle": "Hyni në hapësirën tonë moderne të dizajnuar për komoditetin dhe stilin tuaj",
+        "clickToEnlarge": "Kliko për të zmadhuar"
+    },
+    "services": {
+        "label": "Çfarë Ofrojmë",
+        "title": "Shërbimet Tona",
+        "subtitle": "Nga prerjet klasike deri te paketat premium të kujdesit, ofrojmë gamë të plotë shërbimesh",
+        "duration": "min",
+        "bookNow": "Rezervo",
+        "viewAll": "Shiko Të Gjitha Shërbimet",
+        "ctaTitle": "Gati për të rezervuar?",
+        "ctaSubtitle": "Cakto terminin tënd online me vetëm disa klikime",
+        "ctaButton": "Rezervo Terminin",
+        "categories": {
+            "haircuts": "Prerje Flokësh",
+            "beard": "Mjekër & Rruajtje",
+            "packages": "Paketa"
+        }
+    },
+    "offers": {
+        "label": "Oferta të Kufizuara",
+        "title": "Oferta Speciale",
+        "subtitle": "Përfito nga ofertat tona ekskluzive dhe kurse në shërbime premium",
+        "useCode": "Kodi:",
+        "bookNow": "Rezervo Tani",
+        "bookAppointment": "Rezervo Terminin Tënd",
+        "save": "Kurse",
+        "items": {
+            "firstVisit": {
+                "title": "Vizita e Parë",
+                "description": "20% zbritje në prerjen e parë"
+            },
+            "vipPackage": {
+                "title": "Paketa VIP",
+                "description": "Kujdes komplet për 40€ (kurse 10€)"
+            },
+            "referFriend": {
+                "title": "Ftoni një Mik",
+                "description": "Të dy merrni 15% zbritje"
+            }
+        }
+    },
+    "whyChooseUs": {
+        "label": "Pse Ne?",
+        "title": "Pse të Na Zgjidhni Ne",
+        "subtitle": "Zbuloni arsyet pse klientët tonë na besojnë për stilin e tyre",
+        "features": {
+            "certifiedBarbers": {
+                "title": "Berberë të Certifikuar",
+                "description": "Ekipi ynë përbëhet nga profesionistë të trajnuar me vite përvojë"
+            },
+            "easyBooking": {
+                "title": "Rezervim i Lehtë",
+                "description": "Rezervoni online 24/7 dhe zgjidhni kohën që ju përshtatet"
+            },
+            "premiumHygiene": {
+                "title": "Higjienë Premium",
+                "description": "Standardet më të larta të pastërtisë dhe sterilizimit"
+            },
+            "qualityProducts": {
+                "title": "Produkte Cilësore",
+                "description": "Përdorim vetëm produkte premium për rezultate të shkëlqyera"
+            },
+            "pleasantAtmosphere": {
+                "title": "Atmosferë e Këndshme",
+                "description": "Ambiente relaksuese ku mund të shijoni përvojën tuaj"
+            },
+            "personalCare": {
+                "title": "Kujdes Personal",
+                "description": "Çdo klient trajtohet me vëmendje dhe kujdes të veçantë"
+            }
+        }
+    },
+    "team": {
+        "label": "Ekspertët Tanë",
+        "title": "Takohu me Ekipin",
+        "subtitle": "Berberë të talentuar me pasion për zanatin e tyre",
+        "experience": "vite përvojë"
+    },
+    "stats": {
+        "happyClients": "Klientë të Kënaqur",
+        "yearsExperience": "Vite Përvojë",
+        "haircutsDone": "Prerje të Kryera",
+        "satisfaction": "Kënaqësi"
+    },
+    "reviews": {
+        "label": "Dëshmitë",
+        "title": "Çfarë Thonë Klientët",
+        "reviewsCount": "vlerësime"
+    },
+    "booking": {
+        "title": "Rezervo Terminin Tënd",
+        "subtitle": "Zgjidh shërbimet, berberin, dhe kohën që të përshtatet",
+        "steps": {
+            "services": "Shërbimet",
+            "barber": "Berberi",
+            "datetime": "Data & Ora",
+            "details": "Detajet"
+        },
+        "selectServices": "Zgjidh Shërbimet",
+        "selectedServices": "shërbime të zgjedhura",
+        "total": "Totali",
+        "duration": "Kohëzgjatja",
+        "continue": "Vazhdo",
+        "back": "Kthehu",
+        "selectBarber": "Zgjidh Berberin",
+        "selectServicesSubtitle": "Zgjidh një ose më shumë shërbime",
+        "selectBarberSubtitle": "Zgjidh berberin ose lëre në zgjedhjen tonë",
+        "anyBarber": "Cilido Berber i Disponueshëm",
+        "anyBarberDesc": "Do t'ju caktojmë berberin e disponueshëm",
+        "selectDate": "Zgjidh Datën",
+        "selectTime": "Zgjidh Orën",
+        "selectDateTimeSubtitle": "Zgjidh terminin që të përshtatet",
+        "morning": "Mëngjesi",
+        "afternoon": "Pasdite",
+        "yourDetails": "Detajet e Tua",
+        "summary": "Përmbledhja e Rezervimit",
+        "name": "Emri i Plotë",
+        "phone": "Numri i Telefonit",
+        "email": "Email (opsional)",
+        "confirmBooking": "Konfirmo Rezervimin",
+        "confirmSubtitle": "Rishiko dhe konfirmo rezervimin",
+        "selected": "E Zgjedhur",
+        "choose": "Zgjidh",
+        "noSlots": "Nuk ka terme të disponueshme",
+        "submitting": "Duke dërguar...",
+        "bookingFailed": "Rezervimi dështoi. Ju lutemi provoni përsëri."
+    },
+    "confirmation": {
+        "title": "Rezervimi u Konfirmua!",
+        "subtitle": "Faleminderit që zgjodhët GentleCutx",
+        "details": "Detajet e Rezervimit",
+        "date": "Data",
+        "time": "Ora",
+        "barber": "Berberi",
+        "services": "Shërbimet",
+        "total": "Totali",
+        "reminder": "Do të dërgojmë përkujtues në telefonin tuaj.",
+        "emailNotice": "Konfirmimi u dërgua në",
+        "done": "U Krye"
+    },
+    "about": {
+        "title": "Rreth GentleCutx",
+        "subtitle": "Ku stili takon zotësinë",
+        "story": "Historia Jonë",
+        "storyText": "Në GentleCutx, ne besojmë se kujdesi personal është më shumë se thjesht një prerje flokësh – është një përvojë. Misioni ynë është të ofrojmë shërbim të jashtëzakonshëm në një ambient mikpritës ku çdo klient ndihet i vlerësuar dhe largohet duke u dukur më i mirë.",
+        "mission": "Misioni Ynë",
+        "hours": "Orari i Punës",
+        "closed": "Mbyllur",
+        "yearsOfExcellence": "Vite Ekselence",
+        "clientReviews": "Vlerësimet e Klientëve",
+        "stats": {
+            "happyClients": "Klientë të Kënaqur",
+            "yearsExperience": "Vite Përvojë",
+            "averageRating": "Vlerësimi Mesatar",
+            "onlineBooking": "Rezervim Online"
+        }
+    },
+    "contact": {
+        "title": "Na Kontaktoni",
+        "subtitle": "Keni pyetje? Na shkruani dhe do të përgjigjemi sa më shpejt",
+        "sendMessage": "Na Dërgo Mesazh",
+        "messageSent": "Mesazhi u Dërgua!",
+        "messageSuccess": "Do t'ju kontaktojmë sa më shpejt të jetë e mundur.",
+        "sendAnother": "Dërgo mesazh tjetër",
+        "sending": "Duke dërguar...",
+        "sendFailed": "Dërgimi dështoi. Ju lutemi provoni përsëri.",
+        "viewAllHours": "Shiko të gjitha oraret në faqen Rreth Nesh",
+        "ourLocation": "GentleCutx – lokacioni ynë",
+        "form": {
+            "name": "Emri Juaj",
+            "email": "Email Adresa",
+            "phone": "Telefoni",
+            "message": "Mesazhi",
+            "send": "Dërgo Mesazhin"
+        },
+        "info": {
+            "title": "Informacioni i Kontaktit",
+            "address": "Adresa",
+            "phone": "Telefoni",
+            "email": "Email",
+            "hours": "Orari"
+        },
+        "findUs": "Na Gjeni"
+    },
+    "footer": {
+        "description": "Përvojë premium berberi me profesionistë të aftë të përkushtuar ndaj stilit tuaj.",
+        "quickLinks": "Lidhje të Shpejta",
+        "contactInfo": "Info Kontakti",
+        "openingHours": "Orari i Punës",
+        "rights": "Të gjitha të drejtat e rezervuara.",
+        "privacy": "Politika e Privatësisë",
+        "terms": "Kushtet e Shërbimit",
+        "ctaTitle": "Gati për stilin tuaj të ri?",
+        "ctaSubtitle": "Rezervo tani dhe përfito nga ofertat tona speciale",
+        "ctaButton": "Rezervo Tani"
+    },
+    "privacy": {
+        "title": "Politika e Privatësisë",
+        "lastUpdated": "Përditësuar së fundi: Janar 2026"
+    },
+    "terms": {
+        "title": "Kushtet e Shërbimit",
+        "lastUpdated": "Përditësuar së fundi: Janar 2026"
+    },
+    "notFound": {
+        "title": "Faqja Nuk u Gjet",
+        "description": "Duket se kjo faqe mori pak shumë nga maja. Le të kthehemi në territorin e njohur.",
+        "backHome": "Kthehu në Ballinë",
+        "goBack": "Kthehu Mbrapa"
+    },
+    "common": {
+        "loading": "Duke ngarkuar...",
+        "error": "Ndodhi një gabim",
+        "close": "Mbyll"
+    }
+}

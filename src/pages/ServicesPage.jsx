@@ -2,20 +2,20 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight } from 'lucide-react';
 import { services } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import { localize } from '../utils/localize';
-import { translations } from '../data/translations';
 
 export default function ServicesPage() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
 
     return (
         <main className="pt-20">
             <section className="bg-primary py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t.services.title}</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t('services.title')}</h1>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        {t.services.subtitle}
+                        {t('services.subtitle')}
                     </p>
                 </div>
             </section>
@@ -43,13 +43,13 @@ export default function ServicesPage() {
                                         <div className="flex items-center justify-between mt-4">
                                             <div className="flex items-center text-gray-500">
                                                 <Clock className="h-5 w-5 mr-2" />
-                                                {service.duration} {t.services.duration}
+                                                {service.duration} {t('services.duration')}
                                             </div>
                                             <Link
                                                 to="/booking"
                                                 className="bg-primary hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors"
                                             >
-                                                {t.services.bookNow} <ArrowRight className="h-4 w-4" />
+                                                {t('services.bookNow')} <ArrowRight className="h-4 w-4" />
                                             </Link>
                                         </div>
                                     </div>
@@ -59,13 +59,13 @@ export default function ServicesPage() {
                     ))}
 
                     <div className="text-center mt-12 p-8 bg-secondary/10 rounded-2xl">
-                        <h3 className="text-2xl font-bold text-primary mb-4">{t.services.ctaTitle}</h3>
-                        <p className="text-gray-600 mb-6">{t.services.ctaSubtitle}</p>
+                        <h3 className="text-2xl font-bold text-primary mb-4">{t('services.ctaTitle')}</h3>
+                        <p className="text-gray-600 mb-6">{t('services.ctaSubtitle')}</p>
                         <Link
                             to="/booking"
                             className="inline-flex items-center bg-secondary hover:bg-accent text-primary px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
                         >
-                            {t.services.ctaButton} <ArrowRight className="ml-2 h-5 w-5" />
+                            {t('services.ctaButton')} <ArrowRight className="ml-2 h-5 w-5" />
                         </Link>
                     </div>
                 </div>

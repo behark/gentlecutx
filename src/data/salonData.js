@@ -17,12 +17,12 @@ export const salonInfo = {
 };
 
 export const openingHours = [
-    { day: { sq: "E Hënë", en: "Monday" }, hours: "09:00 - 20:00", isOpen: true },
-    { day: { sq: "E Martë", en: "Tuesday" }, hours: "09:00 - 20:00", isOpen: true },
-    { day: { sq: "E Mërkurë", en: "Wednesday" }, hours: "09:00 - 20:00", isOpen: true },
-    { day: { sq: "E Enjte", en: "Thursday" }, hours: "09:00 - 20:00", isOpen: true },
-    { day: { sq: "E Premte", en: "Friday" }, hours: "09:00 - 20:00", isOpen: true },
-    { day: { sq: "E Shtunë", en: "Saturday" }, hours: "10:00 - 18:00", isOpen: true },
+    { day: { sq: "E Hënë", en: "Monday" }, hours: { sq: "09:00 - 20:00", en: "09:00 - 20:00" }, isOpen: true },
+    { day: { sq: "E Martë", en: "Tuesday" }, hours: { sq: "09:00 - 20:00", en: "09:00 - 20:00" }, isOpen: true },
+    { day: { sq: "E Mërkurë", en: "Wednesday" }, hours: { sq: "09:00 - 20:00", en: "09:00 - 20:00" }, isOpen: true },
+    { day: { sq: "E Enjte", en: "Thursday" }, hours: { sq: "09:00 - 20:00", en: "09:00 - 20:00" }, isOpen: true },
+    { day: { sq: "E Premte", en: "Friday" }, hours: { sq: "09:00 - 20:00", en: "09:00 - 20:00" }, isOpen: true },
+    { day: { sq: "E Shtunë", en: "Saturday" }, hours: { sq: "10:00 - 18:00", en: "10:00 - 18:00" }, isOpen: true },
     { day: { sq: "E Diel", en: "Sunday" }, hours: { sq: "Mbyllur", en: "Closed" }, isOpen: false },
 ];
 

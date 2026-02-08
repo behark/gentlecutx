@@ -1,13 +1,13 @@
 import { Scissors, Award } from 'lucide-react';
 import { barbers } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { useTranslation } from 'react-i18next';
 import { localize } from '../utils/localize';
-import { translations } from '../data/translations';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function TeamSection() {
     const { language } = useLanguage();
-    const t = translations[language];
+    const { t } = useTranslation();
     const { ref, isVisible } = useScrollReveal(0.1);
 
     return (
@@ -24,10 +24,10 @@ export default function TeamSection() {
                     className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 >
                     <span className="inline-flex items-center gap-2 text-secondary font-semibold text-sm tracking-wider uppercase mb-3 bg-secondary/10 px-4 py-2 rounded-full">
-                        <Scissors className="h-4 w-4" /> {t.team.label}
+                        <Scissors className="h-4 w-4" /> {t('team.label')}
                     </span>
-                    <h2 className="section-title">{t.team.title}</h2>
-                    <p className="section-subtitle">{t.team.subtitle}</p>
+                    <h2 className="section-title">{t('team.title')}</h2>
+                    <p className="section-subtitle">{t('team.subtitle')}</p>
                 </div>
 
                 <div className={`grid grid-cols-1 gap-8 ${barbers.length === 1 ? 'max-w-md mx-auto' : 'md:grid-cols-3'}`} style={{ display: 'grid', gap: '2rem' }}>
@@ -44,7 +44,7 @@ export default function TeamSection() {
                                 {/* Experience badge */}
                                 <div className="absolute -top-3 right-3 bg-gradient-to-r from-secondary to-accent text-primary text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 z-10">
                                     <Award className="h-3 w-3" />
-                                    {barber.experience} {language === 'sq' ? 'vite' : 'yrs'}
+                                    {barber.experience} {t('team.experience')}
                                 </div>
 
                                 {/* Profile image with ring */}
