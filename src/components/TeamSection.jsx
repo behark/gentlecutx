@@ -1,6 +1,7 @@
 import { Scissors, Award } from 'lucide-react';
 import { barbers } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { localize } from '../utils/localize';
 import { translations } from '../data/translations';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -57,10 +58,10 @@ export default function TeamSection() {
                                 </div>
 
                                 <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-secondary transition-colors">{barber.name}</h3>
-                                <p className="text-secondary font-medium mb-4">{barber.role[language] || barber.role}</p>
+                                <p className="text-secondary font-medium mb-4">{localize(barber.role, language)}</p>
 
                                 <div className="flex flex-wrap justify-center gap-2">
-                                    {(barber.specialties[language] || barber.specialties).map((specialty, idx) => (
+                                    {(Array.isArray(localize(barber.specialties, language)) ? localize(barber.specialties, language) : []).map((specialty, idx) => (
                                         <span
                                             key={idx}
                                             className="bg-gray-700/50 text-gray-300 px-4 py-1.5 rounded-full text-xs font-medium border border-gray-600/50 hover:border-secondary/50 hover:text-secondary transition-all"

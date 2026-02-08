@@ -82,10 +82,12 @@ export function useCountUp(end, duration = 2000, startOnVisible = true) {
     const [count, setCount] = useState(0);
     const [hasStarted, setHasStarted] = useState(false);
     const ref = useRef(null);
+    const hasStartedRef = useRef(false);
 
     useEffect(() => {
         if (!startOnVisible) {
             setHasStarted(true);
+            hasStartedRef.current = true;
             return;
         }
 
@@ -94,7 +96,8 @@ export function useCountUp(end, duration = 2000, startOnVisible = true) {
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting && !hasStarted) {
+                if (entry.isIntersecting && !hasStartedRef.current) {
+                    hasStartedRef.current = true;
                     setHasStarted(true);
                     observer.unobserve(element);
                 }
@@ -104,7 +107,7 @@ export function useCountUp(end, duration = 2000, startOnVisible = true) {
 
         observer.observe(element);
         return () => observer.disconnect();
-    }, [startOnVisible, hasStarted]);
+    }, [startOnVisible]);
 
     useEffect(() => {
         if (!hasStarted) return;

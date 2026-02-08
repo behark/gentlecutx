@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { CheckCircle, X, Calendar, Clock, User, Scissors } from 'lucide-react';
 import { format } from 'date-fns';
 import { useLanguage } from '../context/LanguageContext';
@@ -5,10 +6,20 @@ import { localize } from '../utils/localize';
 import { translations } from '../data/translations';
 
 export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
-    if (!isOpen) return null;
-
     const { language } = useLanguage();
     const t = translations[language];
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [isOpen]);
+
+    if (!isOpen || !bookingData) return null;
+
     const { services, barber, date, time, customer, totalPrice, totalDuration } = bookingData;
 
     return (
@@ -40,7 +51,7 @@ export default function ConfirmationModal({ isOpen, onClose, bookingData }) {
                         <div>
                             <p className="text-sm text-gray-500">{t.booking.steps.datetime}</p>
                             <p className="font-semibold text-primary">
-                                {format(date, 'EEEE, MMMM d, yyyy')}
+                                {date ? format(date, 'EEEE, MMMM d, yyyy') : '—'}
                             </p>
                             <p className="text-secondary font-medium">{time}</p>
                         </div>

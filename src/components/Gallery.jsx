@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Camera, X, ZoomIn } from 'lucide-react';
 import { galleryImages } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
@@ -37,6 +37,15 @@ export default function Gallery() {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [lightboxOpen, nextSlide, prevSlide]);
+
+    useEffect(() => {
+        if (lightboxOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [lightboxOpen]);
 
     return (
         <section className="py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
@@ -104,8 +113,8 @@ export default function Gallery() {
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                        ? 'bg-secondary w-8'
-                                        : 'bg-white/50 hover:bg-white/80 w-2'
+                                    ? 'bg-secondary w-8'
+                                    : 'bg-white/50 hover:bg-white/80 w-2'
                                     }`}
                             />
                         ))}
@@ -119,8 +128,8 @@ export default function Gallery() {
                             key={index}
                             onClick={() => setCurrentIndex(index)}
                             className={`w-20 h-14 rounded-lg overflow-hidden transition-all duration-300 ${index === currentIndex
-                                    ? 'ring-2 ring-secondary ring-offset-2 scale-105'
-                                    : 'opacity-60 hover:opacity-100'
+                                ? 'ring-2 ring-secondary ring-offset-2 scale-105'
+                                : 'opacity-60 hover:opacity-100'
                                 }`}
                         >
                             <img src={img} alt={`Salon thumbnail ${index + 1}`} loading="lazy" className="w-full h-full object-cover" />

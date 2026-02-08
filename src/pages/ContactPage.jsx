@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { salonInfo, openingHours } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { translations } from '../data/translations';
 
 export default function ContactPage() {
     const { language } = useLanguage();
-    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    const t = translations[language];
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
     const [submitted, setSubmitted] = useState(false);
     const [sending, setSending] = useState(false);
     const [error, setError] = useState(null);
@@ -25,7 +27,7 @@ export default function ContactPage() {
             if (!response.ok) throw new Error();
 
             setSubmitted(true);
-            setFormData({ name: '', email: '', subject: '', message: '' });
+            setFormData({ name: '', email: '', phone: '', message: '' });
         } catch {
             setError(language === 'sq'
                 ? 'Dërgimi dështoi. Ju lutemi provoni përsëri.'
@@ -40,10 +42,10 @@ export default function ContactPage() {
             <section className="bg-primary py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        {language === 'sq' ? 'Na Kontaktoni' : 'Contact Us'}
+                        {t.contact.title}
                     </h1>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        {language === 'sq' ? 'Na kontaktoni për çdo pyetje ose kërkesë' : 'Get in touch with us for any questions or inquiries'}
+                        {t.contact.subtitle}
                     </p>
                 </div>
             </section>
@@ -53,7 +55,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div>
                             <h2 className="text-3xl font-bold text-primary mb-8">
-                                {language === 'sq' ? 'Na Kontaktoni' : 'Get In Touch'}
+                                {t.contact.info.title}
                             </h2>
 
                             <div className="space-y-6 mb-8">
@@ -62,7 +64,7 @@ export default function ContactPage() {
                                         <MapPin className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">{language === 'sq' ? 'Adresa' : 'Address'}</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t.contact.info.address}</h3>
                                         <p className="text-gray-600">{salonInfo.address}</p>
                                     </div>
                                 </div>
@@ -72,7 +74,7 @@ export default function ContactPage() {
                                         <Phone className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">{language === 'sq' ? 'Telefoni' : 'Phone'}</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t.contact.info.phone}</h3>
                                         <p className="text-gray-600">{salonInfo.phone}</p>
                                     </div>
                                 </div>
@@ -92,7 +94,7 @@ export default function ContactPage() {
                                         <Clock className="h-6 w-6 text-secondary" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-primary mb-1">{language === 'sq' ? 'Orari i Punës' : 'Opening Hours'}</h3>
+                                        <h3 className="font-semibold text-primary mb-1">{t.contact.info.hours}</h3>
                                         <div className="text-gray-600 text-sm space-y-1">
                                             {openingHours.slice(0, 3).map((item) => (
                                                 <p key={typeof item.day === 'object' ? item.day[language] : item.day}>{typeof item.day === 'object' ? item.day[language] : item.day}: {typeof item.hours === 'object' ? item.hours[language] : item.hours}</p>
@@ -137,7 +139,7 @@ export default function ContactPage() {
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {language === 'sq' ? 'Emri' : 'Name'}
+                                            {t.contact.form.name}
                                         </label>
                                         <input
                                             type="text"
@@ -145,39 +147,41 @@ export default function ContactPage() {
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
-                                            placeholder={language === 'sq' ? 'Emri juaj' : 'Your name'}
+                                            placeholder={t.contact.form.name}
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">{t.contact.form.email}</label>
                                         <input
                                             type="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
-                                            placeholder={language === 'sq' ? 'email@juaj.com' : 'your@email.com'}
+                                            placeholder={t.contact.form.email}
                                         />
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {language === 'sq' ? 'Subjekti' : 'Subject'}
+                                            {t.contact.form.phone}
                                         </label>
                                         <input
-                                            type="text"
-                                            required
-                                            value={formData.subject}
-                                            onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                                            type="tel"
+                                            value={formData.phone}
+                                            onChange={(e) => {
+                                                const val = e.target.value.replace(/[^0-9+\-\s()]/g, '');
+                                                setFormData({ ...formData, phone: val });
+                                            }}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
-                                            placeholder={language === 'sq' ? 'Si mund t\'ju ndihmojmë?' : 'How can we help?'}
+                                            placeholder={t.contact.form.phone}
                                         />
                                     </div>
 
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                                            {language === 'sq' ? 'Mesazhi' : 'Message'}
+                                            {t.contact.form.message}
                                         </label>
                                         <textarea
                                             required
@@ -185,7 +189,7 @@ export default function ContactPage() {
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary resize-none"
-                                            placeholder={language === 'sq' ? 'Mesazhi juaj...' : 'Your message...'}
+                                            placeholder={t.contact.form.message}
                                         />
                                     </div>
 
@@ -202,7 +206,7 @@ export default function ContactPage() {
                                     >
                                         {sending
                                             ? (language === 'sq' ? 'Duke dërguar...' : 'Sending...')
-                                            : (language === 'sq' ? 'Dërgo Mesazhin' : 'Send Message')
+                                            : t.contact.form.send
                                         }
                                         {!sending && <Send className="h-5 w-5" />}
                                     </button>

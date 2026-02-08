@@ -24,7 +24,7 @@ export default function SpecialOffers() {
             title: t.offers.items.vipPackage.title,
             description: t.offers.items.vipPackage.description,
             code: "VIPSAVE",
-            discount: "€15",
+            discount: "€10",
             icon: Sparkles,
             gradient: "from-secondary to-accent"
         },

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { services } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { localize } from '../utils/localize';
 import { translations } from '../data/translations';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -49,12 +50,12 @@ export default function ServicesPreview() {
 
                                 <div className="mb-4 pr-12">
                                     <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">
-                                        {service.name[language] || service.name}
+                                        {localize(service.name, language)}
                                     </h3>
                                 </div>
 
                                 <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">
-                                    {service.description[language] || service.description}
+                                    {localize(service.description, language)}
                                 </p>
 
                                 <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">

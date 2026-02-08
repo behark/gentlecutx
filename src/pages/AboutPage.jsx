@@ -3,23 +3,25 @@ import { salonInfo, openingHours, barbers, reviews } from '../data/salonData';
 import TeamSection from '../components/TeamSection';
 import { useLanguage } from '../context/LanguageContext';
 import { localize } from '../utils/localize';
+import { translations } from '../data/translations';
 
 export default function AboutPage() {
     const { language } = useLanguage();
+    const t = translations[language];
     const stats = [
-        { icon: Users, value: '5000+', label: 'Happy Clients' },
-        { icon: Award, value: '10+', label: 'Years Experience' },
-        { icon: Star, value: '5.0', label: 'Average Rating' },
-        { icon: Clock, value: '24/7', label: 'Online Booking' },
+        { icon: Users, value: '5000+', label: language === 'sq' ? 'Klientë të Kënaqur' : 'Happy Clients' },
+        { icon: Award, value: '10+', label: language === 'sq' ? 'Vite Përvojë' : 'Years Experience' },
+        { icon: Star, value: '5.0', label: language === 'sq' ? 'Vlerësimi Mesatar' : 'Average Rating' },
+        { icon: Clock, value: '24/7', label: language === 'sq' ? 'Rezervim Online' : 'Online Booking' },
     ];
 
     return (
         <main className="pt-20">
             <section className="bg-primary py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t.about.title}</h1>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        Where tradition meets modern style
+                        {t.about.subtitle}
                     </p>
                 </div>
             </section>
@@ -28,7 +30,7 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-6">{language === 'sq' ? 'Historia Jonë' : 'Our Story'}</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-6">{t.about.story}</h2>
                             <div className="prose prose-lg text-gray-600">
                                 <p className="mb-4">{localize(salonInfo.description, language)}</p>
                                 <p>
@@ -49,7 +51,7 @@ export default function AboutPage() {
                             </div>
                             <div className="absolute -bottom-6 -left-6 bg-secondary text-primary p-6 rounded-xl shadow-lg">
                                 <div className="text-4xl font-bold">10+</div>
-                                <div className="text-sm font-medium">Years of Excellence</div>
+                                <div className="text-sm font-medium">{language === 'sq' ? 'Vite Ekselence' : 'Years of Excellence'}</div>
                             </div>
                         </div>
                     </div>
@@ -76,7 +78,7 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-8">Opening Hours</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-8">{t.about.hours}</h2>
                             <div className="bg-gray-50 rounded-xl p-6">
                                 {openingHours.map((item) => (
                                     <div
@@ -93,7 +95,7 @@ export default function AboutPage() {
                         </div>
 
                         <div>
-                            <h2 className="text-3xl font-bold text-primary mb-8">Client Reviews</h2>
+                            <h2 className="text-3xl font-bold text-primary mb-8">{language === 'sq' ? 'Vlerësimet e Klientëve' : 'Client Reviews'}</h2>
                             <div className="space-y-4">
                                 {reviews.slice(0, 3).map((review) => (
                                     <div key={review.id} className="bg-gray-50 rounded-xl p-6">

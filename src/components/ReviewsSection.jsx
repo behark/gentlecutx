@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { reviews, salonInfo } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
+import { localize } from '../utils/localize';
 import { translations } from '../data/translations';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -68,10 +69,10 @@ export default function ReviewsSection() {
                             <div
                                 key={review.id}
                                 className={`transition-all duration-500 absolute inset-0 p-8 md:p-12 flex flex-col justify-center ${index === activeIndex
-                                        ? 'opacity-100 translate-x-0'
-                                        : index < activeIndex
-                                            ? 'opacity-0 -translate-x-full'
-                                            : 'opacity-0 translate-x-full'
+                                    ? 'opacity-100 translate-x-0'
+                                    : index < activeIndex
+                                        ? 'opacity-0 -translate-x-full'
+                                        : 'opacity-0 translate-x-full'
                                     }`}
                             >
                                 <div className="flex justify-center mb-4">
@@ -80,12 +81,12 @@ export default function ReviewsSection() {
                                     ))}
                                 </div>
                                 <p className="text-white text-xl md:text-2xl text-center leading-relaxed mb-6 italic">
-                                    "{review.text[language] || review.text}"
+                                    "{localize(review.text, language)}"
                                 </p>
                                 <div className="text-center">
                                     <span className="text-secondary font-bold text-lg">{review.author}</span>
                                     <span className="text-gray-400 mx-2">•</span>
-                                    <span className="text-gray-400 text-sm">{review.date[language] || review.date}</span>
+                                    <span className="text-gray-400 text-sm">{localize(review.date, language)}</span>
                                 </div>
                             </div>
                         ))}
@@ -112,8 +113,8 @@ export default function ReviewsSection() {
                                 key={index}
                                 onClick={() => goToReview(index)}
                                 className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex
-                                        ? 'bg-secondary w-8'
-                                        : 'bg-gray-300 hover:bg-gray-400 w-2'
+                                    ? 'bg-secondary w-8'
+                                    : 'bg-gray-300 hover:bg-gray-400 w-2'
                                     }`}
                             />
                         ))}
@@ -136,10 +137,10 @@ export default function ReviewsSection() {
                                         <Star key={i} className="h-3 w-3 text-secondary fill-current" />
                                     ))}
                                 </div>
-                                <p className="text-gray-600 text-xs mb-3 line-clamp-2 italic">"{review.text[language] || review.text}"</p>
+                                <p className="text-gray-600 text-xs mb-3 line-clamp-2 italic">"{localize(review.text, language)}"</p>
                                 <div className="flex items-center justify-between">
                                     <span className="font-semibold text-primary text-sm">{review.author}</span>
-                                    <span className="text-gray-400 text-xs">{review.date[language] || review.date}</span>
+                                    <span className="text-gray-400 text-xs">{localize(review.date, language)}</span>
                                 </div>
                             </div>
                         </div>

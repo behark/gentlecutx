@@ -7,11 +7,21 @@ import { useLanguage } from '../context/LanguageContext';
 import { localize } from '../utils/localize';
 import { translations } from '../data/translations';
 
-const timeSlots = [
-    "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-    "12:00", "12:30", "14:00", "14:30", "15:00", "15:30",
-    "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"
-];
+function getTimeSlotsForDate(date) {
+    if (!date) return [];
+    const isSaturday = date.getDay() === 6;
+    const startHour = isSaturday ? 10 : 9;
+    const endHour = isSaturday ? 17 : 19;
+    const slots = [];
+    for (let h = startHour; h <= endHour; h++) {
+        if (h === 13) continue;
+        slots.push(`${String(h).padStart(2, '0')}:00`);
+        if (h < endHour) {
+            slots.push(`${String(h).padStart(2, '0')}:30`);
+        }
+    }
+    return slots;
+}
 
 export default function BookingSystem() {
     const { language } = useLanguage();
@@ -27,6 +37,7 @@ export default function BookingSystem() {
     const [submitting, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
 
+    const today = new Date().toDateString();
     const availableDates = useMemo(() => {
         const dates = [];
         for (let i = 0; i < 14; i++) {
@@ -36,7 +47,10 @@ export default function BookingSystem() {
             }
         }
         return dates;
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [today]);
+
+    const timeSlots = useMemo(() => getTimeSlotsForDate(selectedDate), [selectedDate]);
 
     const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
     const totalDuration = selectedServices.reduce((sum, s) => sum + s.duration, 0);
@@ -261,9 +275,9 @@ export default function BookingSystem() {
                     <p className="text-gray-600 mb-6">{t.booking.selectDateTimeSubtitle}</p>
 
                     <div className="mb-8">
-                            <h3 className="font-semibold text-primary mb-4 flex items-center gap-2">
-                                <Calendar className="h-5 w-5" /> {t.booking.selectDate}
-                            </h3>
+                        <h3 className="font-semibold text-primary mb-4 flex items-center gap-2">
+                            <Calendar className="h-5 w-5" /> {t.booking.selectDate}
+                        </h3>
                         <div className="flex gap-2 overflow-x-auto pb-2">
                             {availableDates.map((date) => (
                                 <button
@@ -370,7 +384,11 @@ export default function BookingSystem() {
                             type="tel"
                             placeholder={t.booking.phone}
                             value={customerInfo.phone}
-                            onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(/[^0-9+\-\s()]/g, '');
+                                setCustomerInfo({ ...customerInfo, phone: val });
+                            }}
+                            pattern="[0-9+\-\s()]{7,20}"
                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
                         />
                         <input

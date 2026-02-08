@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Phone, MessageCircle, ChevronUp } from 'lucide-react';
 import { salonInfo } from '../data/salonData';
 
 export default function FloatingButtons() {
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const location = useLocation();
 
     const phoneNumber = salonInfo.whatsapp;
+
+    useEffect(() => {
+        setIsExpanded(false);
+    }, [location.pathname]);
 
     useEffect(() => {
         const handleScroll = () => {

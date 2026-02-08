@@ -359,6 +359,3 @@ export const translations = {
     }
 };
 
-export function useTranslation(language) {
-    return translations[language] || translations.sq;
-}

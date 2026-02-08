@@ -6,31 +6,31 @@ export default function StatsSection() {
     const { language } = useLanguage();
 
     const stats = [
-        { 
-            icon: Users, 
-            value: 5000, 
-            suffix: '+', 
+        {
+            icon: Users,
+            value: 5000,
+            suffix: '+',
             label: language === 'sq' ? 'Klientë të Kënaqur' : 'Happy Clients',
             gradient: 'from-blue-500 to-cyan-500'
         },
-        { 
-            icon: Award, 
-            value: 8, 
-            suffix: '+', 
+        {
+            icon: Award,
+            value: 10,
+            suffix: '+',
             label: language === 'sq' ? 'Vite Përvojë' : 'Years Experience',
             gradient: 'from-secondary to-accent'
         },
-        { 
-            icon: Calendar, 
-            value: 15000, 
-            suffix: '+', 
+        {
+            icon: Calendar,
+            value: 15000,
+            suffix: '+',
             label: language === 'sq' ? 'Prerje të Kryera' : 'Haircuts Done',
             gradient: 'from-purple-500 to-pink-500'
         },
-        { 
-            icon: ThumbsUp, 
-            value: 100, 
-            suffix: '%', 
+        {
+            icon: ThumbsUp,
+            value: 100,
+            suffix: '%',
             label: language === 'sq' ? 'Kënaqësi' : 'Satisfaction',
             gradient: 'from-green-500 to-emerald-500'
         }

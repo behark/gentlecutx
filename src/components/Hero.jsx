@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight, Star, MapPin, Clock, Scissors, Sparkles } from 'lucide-react';
-import { salonInfo } from '../data/salonData';
+import { salonInfo, openingHours } from '../data/salonData';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../data/translations';
 
 export default function Hero() {
     const { language } = useLanguage();
     const t = translations[language];
+
+    const todayIndex = new Date().getDay();
+    const todayHoursData = openingHours[todayIndex === 0 ? 6 : todayIndex - 1];
+    const todayHoursText = todayHoursData.isOpen
+        ? (typeof todayHoursData.hours === 'object' ? todayHoursData.hours[language] : todayHoursData.hours)
+        : (language === 'sq' ? 'Mbyllur' : 'Closed');
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -86,7 +92,7 @@ export default function Hero() {
                         </div>
                         <div className="flex items-center gap-2 text-gray-300 glass-premium px-4 py-2 rounded-full">
                             <Clock className="h-4 w-4 text-secondary" />
-                            <span>{language === 'sq' ? 'Hapur Sot' : 'Open Today'}: 09:00 - 20:00</span>
+                            <span>{language === 'sq' ? 'Sot' : 'Today'}: {todayHoursText}</span>
                         </div>
                     </div>
                 </div>
