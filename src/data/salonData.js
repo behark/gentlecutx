@@ -8,7 +8,7 @@ export const salonInfo = {
     address: "Rruga Agim Ramadani, Prishtinë, Kosovë",
     phone: "+383 49 619 080",
     whatsapp: "+38649619080",
-    email: "info@gentlecutx.com",
+    email: "Riadlatifi97@gmail.com",
     instagram: "https://instagram.com/gentlecutx",
     facebook: "https://facebook.com/gentlecutx",
     rating: 5.0,
@@ -39,8 +39,8 @@ export const services = [
         id: 2,
         category: { sq: "Mjekër", en: "Beard" },
         items: [
-            { id: 201, name: { sq: "Rregullim i mjekrrës", en: "Beard Trim" }, duration: 15, price: 4, description: { sq: "Rregullim dhe formësim i mjekrrës", en: "Beard trimming and shaping" } },
-            { id: 202, name: { sq: "Ngjyrosje e mjekrrës", en: "Beard Coloring" }, duration: 20, price: 5, description: { sq: "Ngjyrosje profesionale e mjekrrës", en: "Professional beard coloring" } },
+            { id: 201, name: { sq: "Rregullim i mjekrës", en: "Beard Trim" }, duration: 15, price: 4, description: { sq: "Rregullim dhe formësim i mjekrës", en: "Beard trimming and shaping" } },
+            { id: 202, name: { sq: "Ngjyrosje e mjekrës", en: "Beard Coloring" }, duration: 20, price: 5, description: { sq: "Ngjyrosje profesionale e mjekrës", en: "Professional beard coloring" } },
         ]
     },
     {
