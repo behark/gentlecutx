@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { format, addDays, isSameDay } from 'date-fns';
 import { sq } from 'date-fns/locale';
 import { Clock, User, Calendar, ChevronDown, ChevronUp, X, Check, ArrowRight, ArrowLeft } from 'lucide-react';
@@ -38,6 +38,8 @@ export default function BookingSystem() {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
+    const [bookedSlots, setBookedSlots] = useState([]);
+    const [loadingSlots, setLoadingSlots] = useState(false);
 
     const today = new Date().toDateString();
     const availableDates = useMemo(() => {
@@ -52,10 +54,70 @@ export default function BookingSystem() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [today]);
 
-    const timeSlots = useMemo(() => getTimeSlotsForDate(selectedDate), [selectedDate]);
+    const fetchBookedSlots = useCallback(async () => {
+        if (!selectedDate) return;
+
+        setLoadingSlots(true);
+        try {
+            const dateStr = format(selectedDate, 'yyyy-MM-dd');
+            const barberId = selectedBarber?.id || null;
+            const response = await fetch(`/api/availability?date=${dateStr}&barberId=${barberId}`);
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Fetched booked slots:', data.bookedSlots);
+                setBookedSlots(data.bookedSlots || []);
+            }
+        } catch (error) {
+            console.error('Failed to fetch booked slots:', error);
+        } finally {
+            setLoadingSlots(false);
+        }
+    }, [selectedDate, selectedBarber]);
+
+    useEffect(() => {
+        if (selectedDate) {
+            fetchBookedSlots();
+        }
+    }, [selectedDate, selectedBarber, fetchBookedSlots]);
+
+    const isSlotAvailable = (time) => {
+        const [hours, minutes] = time.split(':').map(Number);
+        const slotStartMinutes = hours * 60 + minutes;
+        const slotEndMinutes = slotStartMinutes + totalDuration;
+
+        for (const booking of bookedSlots) {
+            if (selectedBarber && booking.barberId && booking.barberId !== selectedBarber.id) {
+                continue;
+            }
+
+            const [bookHours, bookMinutes] = booking.time.split(':').map(Number);
+            const bookStartMinutes = bookHours * 60 + bookMinutes;
+            const bookEndMinutes = bookStartMinutes + booking.duration;
+
+            if (
+                (slotStartMinutes >= bookStartMinutes && slotStartMinutes < bookEndMinutes) ||
+                (slotEndMinutes > bookStartMinutes && slotEndMinutes <= bookEndMinutes) ||
+                (slotStartMinutes <= bookStartMinutes && slotEndMinutes >= bookEndMinutes)
+            ) {
+                return false;
+            }
+        }
+        return true;
+    };
 
     const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
     const totalDuration = selectedServices.reduce((sum, s) => sum + s.duration, 0);
+
+    const allTimeSlots = useMemo(() => getTimeSlotsForDate(selectedDate), [selectedDate]);
+
+    const timeSlots = useMemo(() => {
+        if (!selectedDate || totalDuration === 0) return allTimeSlots;
+        const available = allTimeSlots.filter(slot => isSlotAvailable(slot));
+        console.log('Available slots:', available.length, 'out of', allTimeSlots.length);
+        console.log('Booked slots:', bookedSlots);
+        return available;
+    }, [selectedDate, bookedSlots, totalDuration, selectedBarber, allTimeSlots, isSlotAvailable]);
 
     const toggleService = (service) => {
         setSelectedServices(prev => {
@@ -81,8 +143,9 @@ export default function BookingSystem() {
                         price: s.price,
                         duration: s.duration,
                     })),
-                    barber: selectedBarber ? { name: selectedBarber.name } : null,
+                    barber: selectedBarber ? { name: selectedBarber.name, id: selectedBarber.id } : null,
                     date: format(selectedDate, 'EEEE, MMMM d, yyyy'),
+                    dateISO: format(selectedDate, 'yyyy-MM-dd'),
                     time: selectedTime,
                     customer: customerInfo,
                     totalPrice,
@@ -92,13 +155,16 @@ export default function BookingSystem() {
 
             if (!response.ok) throw new Error();
 
+            // Refresh booked slots to update availability
+            await fetchBookedSlots();
+
             setShowConfirmation(true);
         } catch {
             setSubmitError(t('booking.bookingFailed'));
         } finally {
             setSubmitting(false);
         }
-    }, [selectedServices, selectedBarber, selectedDate, selectedTime, customerInfo, totalPrice, totalDuration, language]);
+    }, [selectedServices, selectedBarber, selectedDate, selectedTime, customerInfo, totalPrice, totalDuration, language, fetchBookedSlots, t]);
 
     const handleCloseConfirmation = () => {
         setShowConfirmation(false);
@@ -388,7 +454,9 @@ export default function BookingSystem() {
                                 const val = e.target.value.replace(/[^0-9+\-\s()]/g, '');
                                 setCustomerInfo({ ...customerInfo, phone: val });
                             }}
-                            pattern="[0-9+\-\s()]{7,20}"
+                            required
+                            minLength={7}
+                            maxLength={20}
                             className="w-full p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-secondary"
                         />
                         <input

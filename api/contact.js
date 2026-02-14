@@ -1,6 +1,12 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend;
+const getResend = () => {
+    if (!resend && process.env.RESEND_API_KEY) {
+        resend = new Resend(process.env.RESEND_API_KEY);
+    }
+    return resend;
+};
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -14,12 +20,14 @@ export default async function handler(req, res) {
     }
 
     try {
-        await resend.emails.send({
-            from: `GentleCutx Contact <${process.env.RESEND_FROM_EMAIL}>`,
-            to: [process.env.SALON_EMAIL || 'info@gentlecutx.com'],
-            subject: `Contact Form: ${subject}`,
-            replyTo: email,
-            html: `
+        const resendClient = getResend();
+        if (resendClient) {
+            await resendClient.emails.send({
+                from: `GentleCutx Contact <${process.env.RESEND_FROM_EMAIL}>`,
+                to: [process.env.SALON_EMAIL || 'info@gentlecutx.com'],
+                subject: `Contact Form: ${subject}`,
+                replyTo: email,
+                html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9fafb; padding: 20px;">
                     <div style="background-color: #1a1a2e; padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
                         <h1 style="color: #c4a265; margin: 0; font-size: 24px;">GentleCutx</h1>
@@ -52,7 +60,8 @@ export default async function handler(req, res) {
                     </div>
                 </div>
             `,
-        });
+            });
+        }
 
         return res.status(200).json({ success: true });
     } catch (error) {
